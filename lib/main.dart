@@ -1,3 +1,4 @@
+import 'package:agile_git/LoginPage.dart';
 import 'package:agile_git/homePage.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      home: LoginView(),
     );
   }
 }
