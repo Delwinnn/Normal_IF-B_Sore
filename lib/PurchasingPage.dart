@@ -69,6 +69,7 @@ class _PurchasingViewState extends State<PurchasingView> {
 
         },
         style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           elevation: 7,

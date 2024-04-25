@@ -1,4 +1,5 @@
 import 'package:agile_git/RegisterPage.dart';
+import 'package:agile_git/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -90,21 +91,23 @@ class _LoginViewState extends State<LoginView> {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-  onPressed: () {
-    
-  }, 
-  child: Text("Log In", style: TextStyle(fontSize: 15),),
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.white,
-    backgroundColor: Colors.black,
-    elevation: 7,
-    fixedSize: Size.fromWidth(150),
-    padding:EdgeInsets.all(20),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(30)
-    )
-  ),
-),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => HomeView(),)
+                  );
+                }, 
+                child: Text("Log In", style: TextStyle(fontSize: 15),),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.black,
+                  elevation: 7,
+                  fixedSize: Size.fromWidth(150),
+                  padding:EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)
+                  )
+                ),
+              ),
               SizedBox(height: 25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

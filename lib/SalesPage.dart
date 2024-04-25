@@ -67,6 +67,7 @@ class _SalesViewState extends State<SalesView> {
           
         },
         style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           elevation: 7,

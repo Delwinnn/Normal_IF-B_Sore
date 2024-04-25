@@ -1,3 +1,7 @@
+import 'package:agile_git/AboutPage.dart';
+import 'package:agile_git/PurchasingPage.dart';
+import 'package:agile_git/SalesPage.dart';
+import 'package:agile_git/StockPage.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -8,6 +12,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final companyname = "Normal Store";
+  List halaman = [PurchasingView(),SalesView(),StockView(),AboutView()];
   List fitur = [[
     Icons.attach_money,
     Icons.sell,
@@ -62,7 +67,9 @@ class _HomeViewState extends State<HomeView> {
                 itemBuilder: (context, i) {
                   return GestureDetector(
                     onTap: () {
-                      
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => halaman[i],)
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.all(10),
