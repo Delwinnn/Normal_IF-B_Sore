@@ -3,6 +3,7 @@ import 'package:agile_git/PurchasingPage.dart';
 import 'package:agile_git/SalesPage.dart';
 import 'package:agile_git/StockPage.dart';
 import 'package:flutter/material.dart';
+import 'ProfilePage.dart';
 
 class HomeView extends StatefulWidget {
 
@@ -31,23 +32,26 @@ class _HomeViewState extends State<HomeView> {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
-        actions: [
-          GestureDetector(
-            onTap: () {
-              
-            },
-            child: Row(
-              children: [
-                SizedBox(width: 8), 
-                CircleAvatar(
-                  radius: 20, 
-                  backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIgp6aJcoa9_mornRyWV1vDfEVlkN9mPImV4x-uz1XYQ&s"),
-                ),
-                SizedBox(width: 8),
-              ],
-            ),
-          ),
-        ],
+       actions: [
+  GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
+      );
+    },
+    child: Row(
+      children: [
+        SizedBox(width: 8), 
+        CircleAvatar(
+          radius: 20, 
+          backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIgp6aJcoa9_mornRyWV1vDfEVlkN9mPImV4x-uz1XYQ&s"),
+        ),
+        SizedBox(width: 8),
+      ],
+    ),
+  ),
+],
       ),
       body: SingleChildScrollView(
         child: Container(
