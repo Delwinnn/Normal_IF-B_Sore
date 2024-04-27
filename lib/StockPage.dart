@@ -1,5 +1,7 @@
 import 'package:agile_git/CardStock.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class StockView extends StatefulWidget {
   const StockView({super.key});
@@ -10,19 +12,10 @@ class StockView extends StatefulWidget {
 
 class _StockViewState extends State<StockView> {
   TextEditingController search = TextEditingController();
-  List data = [
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179","EKL Hanger Baju Merah","EKL",230],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568","EKL Gantungan Baju Lidi Plastik","EKL",230],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13","EKL Ember Cor Plastik Hijau","EKL",250],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09","EKL Baskom Plastik 042 Ukuran Sedang","EKL",300],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5","EKL Baskom Plastik 783 Ukuran Besar","EKL",300],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03","OllO Keran Air PVC Premium Ukuran 1/2","OllO",200],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77","Raskam Plastik PVC EKL Premium Quality","EKL",220],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029","OllO Keran Air Putar PVC Premium ukuran 1/2","OllO",250],
-  ];
 
   @override
   Widget build(BuildContext context) {
+    List data = Provider.of<ProviderGudang>(context,listen: false).Gudang.product;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,

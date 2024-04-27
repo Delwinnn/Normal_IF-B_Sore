@@ -1,5 +1,7 @@
 import 'package:agile_git/CardTransaksi.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SalesView extends StatefulWidget {
   SalesView({super.key});
@@ -10,23 +12,10 @@ class SalesView extends StatefulWidget {
 
 class _SalesViewState extends State<SalesView> {
   TextEditingController search = TextEditingController();
-  List data = [
-    ["S000001","05-03-2024","Jokiiii","K1",
-    [["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179","EKL Hanger Baju Merah",22000,70],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13","EKL Ember Cor Plastik Hijau",15000,50]],
-    2290000],
-    ["S000002","10-03-2024","Bobyyyy","K2",
-    [["https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029","OllO Keran Air Putar PVC Premium ukuran 1/2",30000,50],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03","OllO Keran Air PVC Premium Ukuran 1/2",30000,100]],
-    4500000],
-    ["S000003","20-03-2024","Pinyyyy","K2",
-    [["https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77","Raskam Plastik PVC EKL Premium Quality",60000,80],
-    ["https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568","EKL Gantungan Baju Lidi Plastik",18000,70],],
-    6060000],
-  ];
 
   @override
   Widget build(BuildContext context) {
+    List data = Provider.of<ProviderGudang>(context,listen: false).Gudang.sales;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
