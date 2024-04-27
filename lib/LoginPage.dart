@@ -1,7 +1,9 @@
 import 'package:agile_git/RegisterPage.dart';
 import 'package:agile_git/homePage.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -92,8 +94,9 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
+                  Provider.of<ProviderGudang>(context,listen: false).Gudang.usinguser = "OWNER";
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HomeView(),)
+                    MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser))
                   );
                 }, 
                 child: Text("Log In", style: TextStyle(fontSize: 15),),

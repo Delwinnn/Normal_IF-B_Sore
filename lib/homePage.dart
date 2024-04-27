@@ -2,56 +2,58 @@ import 'package:agile_git/AboutPage.dart';
 import 'package:agile_git/PurchasingPage.dart';
 import 'package:agile_git/SalesPage.dart';
 import 'package:agile_git/StockPage.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'ProfilePage.dart';
 
 class HomeView extends StatefulWidget {
+  final Company data;
+  final String user;
+  final List<dynamic> fitur;
+  final dynamic tujuan;
+
+  HomeView({Key? key, required this.data, required this.fitur, required this.user})
+      : tujuan = [PurchasingView(), SalesView(), StockView(), AboutView(), ProfilePage()],
+        super(key: key);
 
   @override
   State<HomeView> createState() => _HomeViewState();
 }
 
 class _HomeViewState extends State<HomeView> {
-  final companyname = "Normal Store";
-  List halaman = [PurchasingView(),SalesView(),StockView(),AboutView()];
-  List fitur = [[
-    Icons.attach_money,
-    Icons.sell,
-    Icons.warehouse,
-    Icons.info
-  ],[
-    "Purchasing","Sales","Stock","About"
-  ]];
+  
   @override
   Widget build(BuildContext context) {
+    final indexUser = widget.data.user[0].indexOf(widget.user); 
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          companyname,
+          widget.data.companyname,
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
-       actions: [
-  GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ProfilePage()),
-      );
-    },
-    child: Row(
-      children: [
-        SizedBox(width: 8), 
-        CircleAvatar(
-          radius: 20, 
-          backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIgp6aJcoa9_mornRyWV1vDfEVlkN9mPImV4x-uz1XYQ&s"),
-        ),
-        SizedBox(width: 8),
-      ],
-    ),
-  ),
-],
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            },
+            child: Row(
+              children: [
+                SizedBox(width: 8), 
+                CircleAvatar(
+                  radius: 20, 
+                  backgroundImage: NetworkImage("${widget.data.user[2][indexUser]}"),
+                ),
+                SizedBox(width: 8),
+              ],
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -59,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             children: [
               Text(
-                'Hello OWNER...',
+                'Hello ${widget.user}...',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               GridView.builder(
@@ -72,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => halaman[i],)
+                        MaterialPageRoute(builder: (context) => widget.tujuan[i],)
                       );
                     },
                     child: Container(
@@ -85,11 +87,11 @@ class _HomeViewState extends State<HomeView> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            fitur[0][i],
+                            widget.fitur[0][i],
                             size: 65,
                           ),
                           Text(
-                            fitur[1][i],
+                            widget.fitur[1][i],
                             style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                           )
                         ],
