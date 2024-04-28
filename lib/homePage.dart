@@ -1,4 +1,5 @@
 import 'package:agile_git/AboutPage.dart';
+import 'package:agile_git/AccountList.dart';
 import 'package:agile_git/PurchasingPage.dart';
 import 'package:agile_git/SalesPage.dart';
 import 'package:agile_git/StockPage.dart';
@@ -103,7 +104,9 @@ class _HomeViewState extends State<HomeView> {
                 padding: EdgeInsets.all(10),
                 child: ElevatedButton(
                   onPressed: () {
-                    
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => AccountView(),)
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
