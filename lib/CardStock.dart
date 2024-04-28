@@ -1,3 +1,4 @@
+import 'package:agile_git/HistoryPage.dart';
 import 'package:flutter/material.dart';
 
 class CardStock extends StatelessWidget {
@@ -8,7 +9,9 @@ class CardStock extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => HistoryPage(name: produk[1]) ,)
+        );
       },
       child: Container(
         decoration: BoxDecoration(
