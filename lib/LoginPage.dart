@@ -18,6 +18,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+  List account = Provider.of<ProviderGudang>(context).Gudang.user;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
@@ -94,10 +95,23 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  Provider.of<ProviderGudang>(context,listen: false).Gudang.usinguser = "OWNER";
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser))
-                  );
+                   setState(() {
+                    int index = account[0].indexOf(user.text.toUpperCase());
+                    if (index != -1) {
+                      if (account[1][index] == pass.text) {
+                        Provider.of<ProviderGudang>(context, listen: false).Gudang.usinguser = account[0][index];
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser))
+                        );
+                      } else {
+                        isCocok = false;
+                        pass.clear();
+                      }
+                    } else {
+                      isCocok = false;
+                      pass.clear();
+                    }
+                  });
                 }, 
                 child: Text("Log In", style: TextStyle(fontSize: 15),),
                 style: ElevatedButton.styleFrom(

@@ -1,5 +1,7 @@
 import 'package:agile_git/LoginPage.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegistrationView extends StatefulWidget {
   @override
@@ -20,6 +22,7 @@ class _RegistrationViewState extends State<RegistrationView> {
 
   @override
   Widget build(BuildContext context) {
+    Company data = Provider.of<ProviderGudang>(context).Gudang;
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
@@ -179,9 +182,54 @@ class _RegistrationViewState extends State<RegistrationView> {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
-
-                },
+                onPressed: (!isUserMax && !isPassMax && isPass) && (user.text.trim() != "" && pass.text != "" && confirm.text != "" && kunci.text != "") ? () {
+                  if (kunci.text == data.key){
+                  setState(() {
+                    if (data.user[0].contains(user.text.toUpperCase())){
+                      isSame = true;
+                      isKey = true;
+                    }
+                    else{
+                      isKey = true;
+                      isPass = true;
+                      data.user[0].add(user.text.toUpperCase());
+                      data.user[1].add(pass.text);
+                      data.user[2].add("https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg");
+                      user.clear();
+                      pass.clear();
+                      kunci.clear();
+                      confirm.clear();
+                      Navigator.of(context).pop();
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Success"),
+                            content: Text("Your Account Registered..."),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("Okay",style: TextStyle(color: Colors.blue),),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  });
+                }
+                else{
+                  setState(() {
+                    isKey = false;
+                    user.clear();
+                    pass.clear();
+                    kunci.clear();
+                    confirm.clear();
+                  });
+                }
+                } : null,
                 child: Text("Register", style: TextStyle(fontSize: 15),),
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
