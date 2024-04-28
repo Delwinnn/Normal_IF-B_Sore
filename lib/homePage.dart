@@ -4,7 +4,6 @@ import 'package:agile_git/SalesPage.dart';
 import 'package:agile_git/StockPage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'ProfilePage.dart';
 
 class HomeView extends StatefulWidget {
