@@ -1,3 +1,4 @@
+import 'package:agile_git/AddStockPage.dart';
 import 'package:agile_git/CardStock.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _StockViewState extends State<StockView> {
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ProviderGudang>(context,listen: false).Gudang.product;
+    List data = Provider.of<ProviderGudang>(context).Gudang.product;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -53,7 +54,9 @@ class _StockViewState extends State<StockView> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AddStock(),)
+          );
         },
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

@@ -15,7 +15,7 @@ class _SalesViewState extends State<SalesView> {
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ProviderGudang>(context,listen: false).Gudang.sales;
+    List data = Provider.of<ProviderGudang>(context).Gudang.sales;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,

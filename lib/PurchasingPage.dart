@@ -15,7 +15,7 @@ class _PurchasingViewState extends State<PurchasingView> {
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ProviderGudang>(context,listen: false).Gudang.purchase;
+    List data = Provider.of<ProviderGudang>(context).Gudang.purchase;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
