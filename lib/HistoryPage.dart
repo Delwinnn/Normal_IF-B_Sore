@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HistoryPage extends StatefulWidget {
-  String name;
+  final String name;
   HistoryPage({super.key,required this.name});
 
   @override
