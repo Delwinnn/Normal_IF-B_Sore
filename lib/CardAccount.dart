@@ -21,15 +21,15 @@ class _CardAccountState extends State<CardAccount> {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
-      margin: EdgeInsetsDirectional.symmetric(vertical: 7),
-      padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      margin: EdgeInsetsDirectional.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children:[ 
               CircleAvatar(
-                radius: 30,
+                radius: 25,
                 backgroundImage: NetworkImage("${widget.pics}"), 
               ),
               SizedBox(width: 15,),
@@ -65,7 +65,7 @@ class _CardAccountState extends State<CardAccount> {
                   color: Colors.grey
                 ),
               ),
-              SizedBox(width: 15,),
+              SizedBox(width: 7,),
               Column(
                 children: [
                   Text("Password"),

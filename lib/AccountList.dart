@@ -31,7 +31,7 @@ class _AccountViewState extends State<AccountView> {
       body:Container(
         height: MediaQuery.of(context).size.height,
         color: Colors.grey[400],
-        padding: EdgeInsets.only(left: 15,right: 15,top: 7,bottom: 7),
+        padding: EdgeInsets.only(left: 7,right: 7,top: 0,bottom: 0),
         child: SingleChildScrollView(
           child: Column(
             children: [
