@@ -1,3 +1,4 @@
+import 'package:agile_git/AddtransactionPage.dart';
 import 'package:agile_git/CardTransaksi.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,9 @@ class _PurchasingViewState extends State<PurchasingView> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => AddTransaction(type: "Purchasing"),)
+          );
         },
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),
