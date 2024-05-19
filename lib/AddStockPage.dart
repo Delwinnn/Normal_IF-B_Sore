@@ -16,17 +16,10 @@ class _AddStockState extends State<AddStock> {
   TextEditingController brand = TextEditingController();
   TextEditingController stock = TextEditingController();
   int? valstock = 1;
-  List<dynamic> newList(List<dynamic> inputList) {
-    List hasil = [];
-    inputList.forEach((subList) {
-      hasil.add(subList[1]);
-    });
-    return hasil;
-  }
+  
 
   @override
   Widget build(BuildContext context) {
-    final Company data = Provider.of<ProviderGudang>(context).Gudang;
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -162,49 +155,8 @@ class _AddStockState extends State<AddStock> {
                   ElevatedButton.icon(
                     onPressed: () {
                       setState(() {
-                        if (link.text == "" || name.text == "" || brand.text == "" || (valstock == 2 && stock.text == "")) {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Alert'),
-                                content: Text('Data Cannot Empty'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                        else if(newList(data.product).contains(name.text)){
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: Text('Alert'),
-                                content: Text('Product Name already Exist'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text('OK'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
-                        else{
-                          List item = [link.text, name.text, brand.text, valstock==2 ? int.parse(stock.text) : 0];
-                          Provider.of<ProviderGudang>(context,listen: false).addStock(item);
-                          Navigator.of(context).pop();
-                        }
+                        List item = [link.text, name.text, brand.text, valstock, stock.text];
+                        Provider.of<ProviderGudang>(context,listen: false).addStock(context, item);
                       });
                     }, 
                     style: ElevatedButton.styleFrom(

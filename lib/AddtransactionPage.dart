@@ -160,11 +160,6 @@ class _AddTransactionState extends State<AddTransaction> {
                               onPressed: () {
                                 setState(() {
                                   ordered.remove(e);
-                                  total = 0;
-                                  for (int x = 0 ; x<ordered.length ; x++ ) {
-                                    int jumlah = ordered[x][2]*ordered[x][3];
-                                    total+=jumlah;
-                                  }
                                 });
                               }, 
                               icon: Icon(Icons.delete,), 
@@ -276,6 +271,7 @@ class _AddTransactionState extends State<AddTransaction> {
                         ),
                         onPressed: () {
                           setState(() {
+                            print(product);
                             if (price.text=="" || qty.text=="" || item.text=="") {
                               showDialog(
                                 context: context, 
@@ -410,7 +406,10 @@ class _AddTransactionState extends State<AddTransaction> {
                     children: [
                       ElevatedButton.icon(
                         onPressed: () {
-
+                          setState(() {
+                            List alldata = [DateFormat("dd-MM-yyyy").format(date),name.text,ordered,total,jenis];
+                            Provider.of<ProviderGudang>(context,listen: false).addTransaction(alldata,context);
+                          });
                         }, 
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.all(15),
@@ -426,7 +425,36 @@ class _AddTransactionState extends State<AddTransaction> {
                       SizedBox(width: 15,),
                       ElevatedButton.icon(
                         onPressed: () {
-                          
+                          showDialog(
+                            context: context, 
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Discard"),
+                                content: Text("Are you sure you want to discard order?"),
+                                actions: [
+                                  TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text("Cancel",style: TextStyle(color: Colors.grey[800]),),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pop();
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                                )
+                              ),
+                              child: Text("Discard",style: TextStyle(color: Colors.white)),
+                            ),
+                                ],
+                              );
+                            },
+                          );
                         }, 
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.all(15),
@@ -450,3 +478,5 @@ class _AddTransactionState extends State<AddTransaction> {
     );
   }
 }
+
+
