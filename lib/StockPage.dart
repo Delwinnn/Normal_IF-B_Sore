@@ -1,7 +1,9 @@
 import 'package:agile_git/AddStockPage.dart';
 import 'package:agile_git/CardStock.dart';
 import 'package:agile_git/provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class StockView extends StatefulWidget {
@@ -13,10 +15,17 @@ class StockView extends StatefulWidget {
 
 class _StockViewState extends State<StockView> {
   TextEditingController search = TextEditingController();
+  List datastock = [];
+  List filtered = [];
+
+  @override
+  void initState() {
+    super.initState();
+    datastock = Provider.of<ProviderGudang>(context,listen: false).Gudang.product;
+  }
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ProviderGudang>(context).Gudang.product;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -35,7 +44,19 @@ class _StockViewState extends State<StockView> {
                 child: TextField(
                   controller: search,
                   onChanged: (value) {
-                    
+                    setState(() {
+                      if (value!=""){
+                        filtered=[];
+                        for (int i = 0;i < datastock.length; i++) {
+                          if (datastock[i][1].toLowerCase().contains(value.toLowerCase()) || datastock[i][2].toLowerCase().contains(value.toLowerCase())) {
+                            filtered.add(datastock[i]);
+                          }
+                        }
+                      }
+                      else{
+                        filtered = datastock;
+                      }
+                    });
                   },
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search,color: Colors.black),
@@ -45,7 +66,12 @@ class _StockViewState extends State<StockView> {
                   ),
                 ),
               ),
-              ...data.map<Widget>((item) {
+              ...
+              search.text == ""
+              ? Provider.of<ProviderGudang>(context).Gudang.product.map<Widget>((item) {
+                return CardStock(produk: item);
+              })
+              : filtered.map<Widget>((item) {
                 return CardStock(produk: item);
               }),
             ]
@@ -54,9 +80,11 @@ class _StockViewState extends State<StockView> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AddStock(),)
-          );
+          setState(() {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => AddStock(),)
+            );
+          });
         },
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),

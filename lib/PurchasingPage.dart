@@ -13,10 +13,17 @@ class PurchasingView extends StatefulWidget {
 
 class _PurchasingViewState extends State<PurchasingView> {
   TextEditingController search = TextEditingController();
+  List data = [];
+  List filtered = [];
+
+  @override
+  void initState() {
+    super.initState();
+    data = Provider.of<ProviderGudang>(context,listen: false).Gudang.purchase;
+  }
 
   @override
   Widget build(BuildContext context) {
-    List data = Provider.of<ProviderGudang>(context).Gudang.purchase;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -35,7 +42,19 @@ class _PurchasingViewState extends State<PurchasingView> {
                 child: TextField(
                   controller: search,
                   onChanged: (value) {
-                    
+                    setState(() {
+                      if (value!=""){
+                        filtered=[];
+                        for (int i = 0;i < data.length; i++) {
+                          if (data[i][0].toLowerCase().contains(value.toLowerCase()) || data[i][2].toLowerCase().contains(value.toLowerCase()) || data[i][3].toLowerCase().contains(value.toLowerCase())) {
+                            filtered.add(data[i]);
+                          }
+                        }
+                      }
+                      else{
+                        filtered = data;
+                      }
+                    });
                   },
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search,color: Colors.black),
@@ -45,8 +64,13 @@ class _PurchasingViewState extends State<PurchasingView> {
                   ),
                 ),
               ),
-              ...data.toList().map<Widget>((item) {
-                return CardTrans(x: item);
+              ...
+              search.text == ""
+              ? Provider.of<ProviderGudang>(context).Gudang.purchase.reversed.toList().map<Widget>((item) {
+                return CardTrans(x: item, type:"Purchase");
+              })
+              : filtered.reversed.toList().map<Widget>((item) {
+                return CardTrans(x: item, type:"Purchase");
               }),
             ]
           ),
@@ -55,7 +79,7 @@ class _PurchasingViewState extends State<PurchasingView> {
       floatingActionButton: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AddTransaction(type: "Purchasing"),)
+            MaterialPageRoute(builder: (context) => AddTransaction(type: "",),)
           );
         },
         style: ElevatedButton.styleFrom(
