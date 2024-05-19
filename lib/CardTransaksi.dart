@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 
 class CardTrans extends StatefulWidget {
   final List x;
-  const CardTrans({super.key, required this.x});
+  final String type;
+  const CardTrans({super.key, required this.x, required this.type});
 
   @override
   State<CardTrans> createState() => _CardTransState();
