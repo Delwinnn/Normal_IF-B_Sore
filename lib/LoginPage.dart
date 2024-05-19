@@ -103,6 +103,8 @@ class _LoginViewState extends State<LoginView> {
                         Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser))
                         );
+                        user.clear();
+                        pass.clear();
                       } else {
                         isCocok = false;
                         pass.clear();
