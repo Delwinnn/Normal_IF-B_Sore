@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:agile_git/ChangeName.dart';
 import 'package:agile_git/ChangePass.dart';
 import 'package:agile_git/ChangePicture.dart';
-import 'package:agile_git/LoginPage.dart';
 
 
 
@@ -189,10 +188,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop();
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => LoginView()),
-                                );
+                                Navigator.popUntil(context, (route) => route.isFirst);
                               },
                               style: TextButton.styleFrom(
                                 backgroundColor: Colors.red,
