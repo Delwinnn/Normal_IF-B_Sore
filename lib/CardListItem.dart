@@ -18,11 +18,7 @@ class ListItem extends StatelessWidget {
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Image(
-          image: NetworkImage("${data[0]}"),
-          height: MediaQuery.of(context).size.height/8,
-          width: 100,
-        ),
+          child: data[0]
         ),
         Expanded(
           child: Container(
