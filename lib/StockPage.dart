@@ -34,48 +34,54 @@ class _StockViewState extends State<StockView> {
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
         color: Colors.grey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(5),
-                child: TextField(
-                  controller: search,
-                  onChanged: (value) {
-                    setState(() {
-                      if (value!=""){
-                        filtered=[];
-                        for (int i = 0;i < datastock.length; i++) {
-                          if (datastock[i][1].toLowerCase().contains(value.toLowerCase()) || datastock[i][2].toLowerCase().contains(value.toLowerCase())) {
-                            filtered.add(datastock[i]);
-                          }
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(5),
+              child: TextField(
+                controller: search,
+                onChanged: (value) {
+                  setState(() {
+                    if (value!=""){
+                      filtered=[];
+                      for (int i = 0;i < datastock.length; i++) {
+                        if (datastock[i][1].toLowerCase().contains(value.toLowerCase()) || datastock[i][2].toLowerCase().contains(value.toLowerCase())) {
+                          filtered.add(datastock[i]);
                         }
                       }
-                      else{
-                        filtered = datastock;
-                      }
-                    });
-                  },
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search,color: Colors.black),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Search",
-                  ),
+                    }
+                    else{
+                      filtered = datastock;
+                    }
+                  });
+                },
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search,color: Colors.black),
+                  fillColor: Colors.white,
+                  filled: true,
+                  hintText: "Search",
                 ),
               ),
-              ...
-              search.text == ""
-              ? Provider.of<ProviderGudang>(context).Gudang.product.map<Widget>((item) {
-                return CardStock(produk: item);
-              })
-              : filtered.map<Widget>((item) {
-                return CardStock(produk: item);
-              }),
-            ]
-          ),
+            ),
+            SizedBox(height: 5,),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ...search.text == ""
+                    ? Provider.of<ProviderGudang>(context).Gudang.product.map<Widget>((item) {
+                      return CardStock(produk: item);
+                    })
+                    : filtered.map<Widget>((item) {
+                      return CardStock(produk: item);
+                    }),
+                  ],
+                ),
+              )
+            )
+          ]
         )
       ),
       floatingActionButton: ElevatedButton(

@@ -34,46 +34,51 @@ class _SalesViewState extends State<SalesView> {
         height: MediaQuery.of(context).size.height,
         padding: EdgeInsets.all(7),
         color: Colors.grey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(5),
-                child: TextField(
-                  controller: search,
-                  onChanged: (value) {
-                    setState(() {
-                      if (value!=""){
-                        filtered=[];
-                        for (int i = 0;i < data.length; i++) {
-                          if (data[i][0].toLowerCase().contains(value.toLowerCase()) || data[i][2].toLowerCase().contains(value.toLowerCase()) || data[i][3].toLowerCase().contains(value.toLowerCase())) {
-                            filtered.add(data[i]);
-                          }
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(5),
+              child: TextField(
+                controller: search,
+                onChanged: (value) {
+                  setState(() {
+                    if (value!=""){
+                      filtered=[];
+                      for (int i = 0;i < data.length; i++) {
+                        if (data[i][0].toLowerCase().contains(value.toLowerCase()) || data[i][2].toLowerCase().contains(value.toLowerCase()) || data[i][3].toLowerCase().contains(value.toLowerCase())) {
+                          filtered.add(data[i]);
                         }
                       }
-                      else{
-                        filtered = data;
-                      }
-                    });
-                  },
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search,color: Colors.black),
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Search",
-                  ),
+                    }
+                    else{
+                      filtered = data;
+                    }
+                  });
+                },
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search,color: Colors.black),
+                  fillColor: Colors.white,
+                  filled: true,
+                  hintText: "Search",
                 ),
               ),
-              ...
-              search.text == ""
-              ? Provider.of<ProviderGudang>(context).Gudang.sales.reversed.map<Widget>((item) {
-                return CardTrans(x: item, type: "Sales");
-              })
-              : filtered.reversed.map<Widget>((item) {
-                return CardTrans(x: item, type: "Sales");
-              }),
-            ]
-          ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ...search.text == ""
+                    ? Provider.of<ProviderGudang>(context).Gudang.sales.reversed.map<Widget>((item) {
+                      return CardTrans(x: item, type: "Sales");
+                    })
+                    : filtered.reversed.map<Widget>((item) {
+                      return CardTrans(x: item, type: "Sales");
+                    }),
+                  ],
+                ),
+              ) 
+            )
+          ]
         )
       ),
       floatingActionButton: ElevatedButton(
