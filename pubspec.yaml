@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   intl:
   provider:
+  image_picker:
 
 dev_dependencies:
   flutter_test:
