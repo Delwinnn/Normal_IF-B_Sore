@@ -160,6 +160,11 @@ class _AddTransactionState extends State<AddTransaction> {
                               onPressed: () {
                                 setState(() {
                                   ordered.remove(e);
+                                  total = 0;
+                                  for (int x = 0 ; x<ordered.length ; x++ ) {
+                                    int jumlah = ordered[x][2]*ordered[x][3];
+                                    total+=jumlah;
+                                  }
                                 });
                               }, 
                               icon: Icon(Icons.delete,), 
@@ -302,7 +307,7 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[0].toString(),product[1].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered[index] = x;
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
@@ -359,7 +364,7 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[0].toString(),product[1].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered.add(x);
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
