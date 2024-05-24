@@ -24,12 +24,7 @@ class CardStock extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(
-              image: NetworkImage('${produk[0]}'),
-              height: MediaQuery.of(context).size.height/8,
-              width: 100,
-              fit: BoxFit.contain,
-            ),
+            produk[0],
             SizedBox(width: 20),
             Expanded(
               child: Column(
