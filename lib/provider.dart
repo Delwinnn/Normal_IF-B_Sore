@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class Company{
@@ -39,45 +41,169 @@ class ProviderGudang extends ChangeNotifier{
       ]
     ], 
     product: [
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179","EKL Hanger Baju Merah","EKL",230],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568","EKL Gantungan Baju Lidi Plastik","EKL",230],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13","EKL Ember Cor Plastik Hijau","EKL",250],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09","EKL Baskom Plastik 042 Ukuran Sedang","EKL",300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5","EKL Baskom Plastik 783 Ukuran Besar","EKL",300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03","OllO Keran Air PVC Premium Ukuran 1/2","OllO",200],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77","Raskam Plastik PVC EKL Premium Quality","EKL",220],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029","OllO Keran Air Putar PVC Premium ukuran 1/2","OllO",250],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),
+      "EKL Hanger Baju Merah","EKL",230],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),
+      "EKL Gantungan Baju Lidi Plastik","EKL",230],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"EKL Ember Cor Plastik Hijau","EKL",250],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"EKL Baskom Plastik 042 Ukuran Sedang","EKL",300],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"EKL Baskom Plastik 783 Ukuran Besar","EKL",300],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"OllO Keran Air PVC Premium Ukuran 1/2","OllO",200],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"Raskam Plastik PVC EKL Premium Quality","EKL",220],
+      [Image(
+        image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029'),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      ),"OllO Keran Air Putar PVC Premium ukuran 1/2","OllO",250],
     ], 
     salescode: 3,
     sales: [
       ["S000001","05-03-2024","Jokiiii","SELLER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179","EKL Hanger Baju Merah",22000,70],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13","EKL Ember Cor Plastik Hijau",15000,50]],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Hanger Baju Merah",22000,70],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Ember Cor Plastik Hijau",15000,50]
+      ],
       2290000],
       ["S000002","10-03-2024","Bobyyyy","SELLER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029","OllO Keran Air Putar PVC Premium ukuran 1/2",30000,50],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03","OllO Keran Air PVC Premium Ukuran 1/2",30000,100]],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"OllO Keran Air Putar PVC Premium ukuran 1/2",30000,50],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"OllO Keran Air PVC Premium Ukuran 1/2",30000,100]
+      ],
       4500000],
       ["S000003","20-03-2024","Pinyyyy","OWNER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77","Raskam Plastik PVC EKL Premium Quality",60000,80],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568","EKL Gantungan Baju Lidi Plastik",18000,70],],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"Raskam Plastik PVC EKL Premium Quality",60000,80],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Gantungan Baju Lidi Plastik",18000,70],
+      ],
       6060000],
     ], 
     purchasecode: 3,
     purchase: [
       ["P000001","05-03-2024","Budiiiii","PURCHASER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179","EKL Hanger Baju Merah",15000,300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13","EKL Ember Cor Plastik Hijau",15000,300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568","EKL Gantungan Baju Lidi Plastik",12000,300]],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Hanger Baju Merah",15000,300],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Ember Cor Plastik Hijau",15000,300],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Gantungan Baju Lidi Plastik",12000,300]
+      ],
       12600000],
       ["P000002","09-03-2024","Andiiiii","OWNER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09","EKL Baskom Plastik 042 Ukuran Sedang",30000,300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77","Raskam Plastik PVC EKL Premium Quality",35000,300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5","EKL Baskom Plastik 783 Ukuran Besar",45000,300]],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Baskom Plastik 042 Ukuran Sedang",30000,300],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"Raskam Plastik PVC EKL Premium Quality",35000,300],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"EKL Baskom Plastik 783 Ukuran Besar",45000,300]
+      ],
       33000000],
       ["P000003","11-03-2024","Rianaaaa","PURCHASER",
-      [["https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03","OllO Keran Air PVC Premium Ukuran 1/2",25000,300],
-      ["https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029","OllO Keran Air Putar PVC Premium ukuran 1/2",25000,300]],
+      [
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"OllO Keran Air PVC Premium Ukuran 1/2",25000,300],
+        [Image(
+          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029'),
+          height: 90,
+          width: 90,
+          fit: BoxFit.contain,
+        ),"OllO Keran Air Putar PVC Premium ukuran 1/2",25000,300]
+      ],
       15000000],
     ],
   );
@@ -120,8 +246,8 @@ void updatePassword(String username, String oldPassword, String newPassword) {
     notifyListeners();
   }
 
-  void addStock(BuildContext context, List item) {
-    if (item[0] == "" || item[1] == "" || item[2] == "" || (item[3] == 2 && item[4] == "")) {
+  void addStock(BuildContext context, List item, int? valimg) {
+    if (item[1] == "" || item[2] == "" || (item[3] == 2 && item[4] == "") || (item[0]==null || item[0]=="")) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -160,7 +286,19 @@ void updatePassword(String username, String oldPassword, String newPassword) {
       );
     }
     else{
-      List result = [item[0], item[1], item[2], item[3]==2 ? int.parse(item[4]) : 0];
+      Widget gmbr = valimg==0
+      ? Image(
+        image: FileImage(File(item[0]!.path)),
+        height: 90,
+        width: 90,
+        fit: BoxFit.contain,
+      )
+      : Image(
+        image: NetworkImage(item[0]),
+        height: 90,
+        width: 90,
+      );
+      List result = [gmbr, item[1], item[2], item[3]==2 ? int.parse(item[4]) : 0];
       Gudang.product.add(result);
       Navigator.of(context).pop(true);
     }
