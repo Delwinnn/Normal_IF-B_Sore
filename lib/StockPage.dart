@@ -1,5 +1,9 @@
+import 'package:agile_git/AboutPage.dart';
 import 'package:agile_git/AddStockPage.dart';
 import 'package:agile_git/CardStock.dart';
+import 'package:agile_git/PurchasingPage.dart';
+import 'package:agile_git/SalesPage.dart';
+import 'package:agile_git/homePage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -107,6 +111,28 @@ class _StockViewState extends State<StockView> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: 0,
+        onTap: (index) {
+          
+          switch (index) {
+            case 0:
+              break;
+            case 1:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PurchasingView()));
+              break;
+            case 2:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser)));
+              break;
+            case 3:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
+              break;
+            case 4:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutView()));
+              break;
+          }
+          },
+      ),
     );
   }
 }
