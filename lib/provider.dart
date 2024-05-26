@@ -393,3 +393,54 @@ List<dynamic> newList(List<dynamic> inputList) {
     });
     return hasil;
   }
+
+class BottomNavBar extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onTap;
+
+  const BottomNavBar({
+    required this.selectedIndex,
+    required this.onTap,
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+        backgroundColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        unselectedLabelStyle: TextStyle(color: Colors.grey),
+      items: const <BottomNavigationBarItem>[    
+        BottomNavigationBarItem(
+          backgroundColor: Colors.black,
+          icon: Icon(Icons.warehouse),
+          label: 'Stock',
+        ),
+        BottomNavigationBarItem(
+          backgroundColor: Colors.black,
+          icon: Icon(Icons.attach_money),
+          label: 'Purchasing',
+        ),
+        BottomNavigationBarItem(
+          backgroundColor: Colors.black,
+          icon: Icon(Icons.house_sharp),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          backgroundColor: Colors.black,
+          icon: Icon(Icons.sell),
+          label: 'Sales',
+        ),
+        BottomNavigationBarItem(
+          backgroundColor: Colors.black,
+          icon: Icon(Icons.info),
+          label: 'About',
+        ),
+      ],
+        
+      currentIndex: selectedIndex,
+      onTap: onTap,
+    );
+  }
+}
