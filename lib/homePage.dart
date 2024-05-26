@@ -22,7 +22,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  
+  int select = 2;
   @override
   Widget build(BuildContext context) {
     final indexUser = widget.data.user[0].indexOf(widget.user); 
@@ -129,6 +129,30 @@ class _HomeViewState extends State<HomeView> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: select,
+        onTap: (index) {
+          setState(() {
+            select = index;
+          });
+          switch (index) {
+            case 0:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => StockView()));
+              break;
+            case 1:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PurchasingView()));
+              break;
+            case 2:
+              break;
+            case 3:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
+              break;
+            case 4:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutView()));
+              break;
+          }
+          },
       ),
     );
   }
