@@ -1,4 +1,10 @@
+import 'package:agile_git/PurchasingPage.dart';
+import 'package:agile_git/SalesPage.dart';
+import 'package:agile_git/StockPage.dart';
+import 'package:agile_git/homePage.dart';
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -65,6 +71,28 @@ class AboutView extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: 4,
+        onTap: (index) {
+          
+          switch (index) {
+            case 0:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => StockView()));
+              break;
+            case 1:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PurchasingView()));
+              break;
+            case 2:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser)));
+              break;
+            case 3:
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
+              break;
+            case 4:
+              break;
+          }
+          },
       ),
     );
   }
