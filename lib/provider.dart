@@ -300,8 +300,8 @@ void updatePassword(String username, String oldPassword, String newPassword) {
         for (int j = 0 ; j<data.length ; j++) {
           if (data[j].contains(dataorder[2][i][1])) {
             typee == "Sales" 
-            ? data[j][3] = data[j][3]-dataorder[2][i][3] 
-            : data[j][3] = data[j][3]+dataorder[2][i][3];
+            ? data[j][3] = data[j][3]-dataorder[2][i][2] 
+            : data[j][3] = data[j][3]+dataorder[2][i][2];
           }
         }
       }
