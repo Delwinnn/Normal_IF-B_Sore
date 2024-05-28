@@ -140,12 +140,13 @@ class _AddTransactionState extends State<AddTransaction> {
                             ElevatedButton.icon(
                               onPressed: () {
                                 setState(() {
-                                  item.text = e[1];
+                                  item.text = e[0];
                                   product=e;
-                                  price.text = "${e[2]}";
-                                  qty.text = "${e[3]}";
+                                  price.text = "${e[1]}";
+                                  qty.text = "${e[2]}";
                                   isEdit = true;
                                   index = ordered.indexOf(e);
+                                  print(index);
                                 });
                               }, 
                               icon: Icon(Icons.edit,), 
@@ -162,7 +163,7 @@ class _AddTransactionState extends State<AddTransaction> {
                                   ordered.remove(e);
                                   total = 0;
                                   for (int x = 0 ; x<ordered.length ; x++ ) {
-                                    int jumlah = ordered[x][2]*ordered[x][3];
+                                    int jumlah = ordered[x][1]*ordered[x][2];
                                     total+=jumlah;
                                   }
                                 });
@@ -237,7 +238,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       SizedBox(width: 15,),
                       Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width/6,
+                        width: MediaQuery.of(context).size.width/5.5,
                         child: TextField(
                           controller: qty,
                           textAlign: TextAlign.center,
@@ -276,7 +277,6 @@ class _AddTransactionState extends State<AddTransaction> {
                         ),
                         onPressed: () {
                           setState(() {
-                            print(product);
                             if (price.text=="" || qty.text=="" || item.text=="") {
                               showDialog(
                                 context: context, 
@@ -307,11 +307,11 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[0].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered[index] = x;
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
-                                int jumlah = ordered[x][2]*ordered[x][3];
+                                int jumlah = ordered[x][1]*ordered[x][2];
                                 total+=jumlah;
                               }
                               item.text = "";
@@ -364,11 +364,11 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[1].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered.add(x);
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
-                                int jumlah = ordered[x][2]*ordered[x][3];
+                                int jumlah = ordered[x][1]*ordered[x][2];
                                 total+=jumlah;
                               }
                               item.text = "";
