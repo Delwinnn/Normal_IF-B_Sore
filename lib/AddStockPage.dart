@@ -24,6 +24,7 @@ class _AddStockState extends State<AddStock> {
   TextEditingController brand = TextEditingController();
   TextEditingController stock = TextEditingController();
   int? valstock = 1;
+  bool showlinkimg = false;
   
   @override
   void dispose() {
@@ -63,7 +64,7 @@ class _AddStockState extends State<AddStock> {
                   fit: BoxFit.contain,
                 ),
               )
-              else if(_link.text != "")
+              else if(showlinkimg)
               Center(
                 child: Image(
                   image: NetworkImage(_link.text),
@@ -98,6 +99,8 @@ class _AddStockState extends State<AddStock> {
                   IconButton(
                     onPressed: () {
                       setState(() {
+                        showlinkimg = true;
+                        _image = null;
                       });
                     }, 
                     style: ButtonStyle(
@@ -111,6 +114,10 @@ class _AddStockState extends State<AddStock> {
               Center(
                 child: ElevatedButton(
                   onPressed: () {
+                    setState(() {
+                      showlinkimg = false;
+                      _valimg = 0;
+                    });
                     showModalBottomSheet<void>(
                       isScrollControlled: true,
                       context: context,
@@ -134,7 +141,10 @@ class _AddStockState extends State<AddStock> {
                                       _valimg = 0;
                                       final XFile? image = await _picker.pickImage(source: ImageSource.camera);
                                       setState(() {
-                                        _image = image;
+                                        if(image!=null){
+                                          _image = image;
+                                          _valimg = 0;
+                                        }
                                       });
                                     },
                                     leading: Icon(Icons.camera_alt_outlined,size: 30,),
@@ -146,7 +156,10 @@ class _AddStockState extends State<AddStock> {
                                       _valimg = 0;
                                       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
                                       setState(() {
-                                        _image = image;
+                                        if(image!=null){
+                                          _image = image;
+                                          _valimg = 0;
+                                        }
                                       });
                                     },
                                     leading: Icon(Icons.photo_library_outlined,size: 30,),
@@ -175,7 +188,7 @@ class _AddStockState extends State<AddStock> {
                     backgroundColor: Colors.grey[300],
                     foregroundColor: Colors.grey[800],
                     shape: RoundedRectangleBorder(
-                      borderRadius: _valimg==0 && _image==null ? BorderRadius.circular(15) : BorderRadius.circular(30)
+                      borderRadius: _valimg==0 && _image==null && _link.text == ""? BorderRadius.circular(15) : BorderRadius.circular(30)
                     ),
                     elevation: 5,
                   ),
