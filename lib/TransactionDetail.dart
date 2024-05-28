@@ -12,7 +12,7 @@ class PurchaseDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List brg = dataTransaksi[4];   
-    final int total = brg.fold(0, (previousValue, element) => previousValue + (element[2]*element[3] as int));
+    final int total = brg.fold(0, (previousValue, element) => previousValue + (element[1]*element[2] as int));
     return Scaffold(
       appBar: AppBar(
         title: Text(type=="Sales"
