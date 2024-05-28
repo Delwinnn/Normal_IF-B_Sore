@@ -96,50 +96,20 @@ class ProviderGudang extends ChangeNotifier{
     sales: [
       ["S000001","05-03-2024","Jokiiii","SELLER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Hanger Baju Merah",22000,70],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Ember Cor Plastik Hijau",15000,50]
+        ["EKL Hanger Baju Merah",22000,70],
+        ["EKL Ember Cor Plastik Hijau",15000,50]
       ],
       2290000],
       ["S000002","10-03-2024","Bobyyyy","SELLER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"OllO Keran Air Putar PVC Premium ukuran 1/2",30000,50],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"OllO Keran Air PVC Premium Ukuran 1/2",30000,100]
+        ["OllO Keran Air Putar PVC Premium ukuran 1/2",30000,50],
+        ["OllO Keran Air PVC Premium Ukuran 1/2",30000,100]
       ],
       4500000],
       ["S000003","20-03-2024","Pinyyyy","OWNER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"Raskam Plastik PVC EKL Premium Quality",60000,80],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Gantungan Baju Lidi Plastik",18000,70],
+        ["Raskam Plastik PVC EKL Premium Quality",60000,80],
+        ["EKL Gantungan Baju Lidi Plastik",18000,70],
       ],
       6060000],
     ], 
@@ -147,62 +117,22 @@ class ProviderGudang extends ChangeNotifier{
     purchase: [
       ["P000001","05-03-2024","Budiiiii","PURCHASER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cl52179'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Hanger Baju Merah",15000,300],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r992-lsct022cjqhl13'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Ember Cor Plastik Hijau",15000,300],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98r-lsct022cibx568'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Gantungan Baju Lidi Plastik",12000,300]
+        ["EKL Hanger Baju Merah",15000,300],
+        ["EKL Ember Cor Plastik Hijau",15000,300],
+        ["EKL Gantungan Baju Lidi Plastik",12000,300]
       ],
       12600000],
       ["P000002","09-03-2024","Andiiiii","OWNER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98v-lsct022cgxmu09'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Baskom Plastik 042 Ukuran Sedang",30000,300],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98u-lt7kukaiu8ue77'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"Raskam Plastik PVC EKL Premium Quality",35000,300],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r990-lsct022cny6xe5'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"EKL Baskom Plastik 783 Ukuran Besar",45000,300]
+        ["EKL Baskom Plastik 042 Ukuran Sedang",30000,300],
+        ["Raskam Plastik PVC EKL Premium Quality",35000,300],
+        ["EKL Baskom Plastik 783 Ukuran Besar",45000,300]
       ],
       33000000],
       ["P000003","11-03-2024","Rianaaaa","PURCHASER",
       [
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98y-lthnk07b51xe03'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"OllO Keran Air PVC Premium Ukuran 1/2",25000,300],
-        [Image(
-          image: NetworkImage('https://down-id.img.susercontent.com/file/id-11134207-7r98z-lti1e8325da029'),
-          height: 90,
-          width: 90,
-          fit: BoxFit.contain,
-        ),"OllO Keran Air Putar PVC Premium ukuran 1/2",25000,300]
+        ["OllO Keran Air PVC Premium Ukuran 1/2",25000,300],
+        ["OllO Keran Air Putar PVC Premium ukuran 1/2",25000,300]
       ],
       15000000],
     ],
@@ -243,6 +173,11 @@ void updatePassword(String username, String oldPassword, String newPassword) {
 
   void updateUserImage(int userIndex, String newImageUrl) {
     Gudang.user[2][userIndex] = newImageUrl;
+    notifyListeners();
+  }
+
+  void updateDataStock(int index, Widget? newData){
+    Gudang.product[index][0] = newData;
     notifyListeners();
   }
 
@@ -394,6 +329,18 @@ List<dynamic> newList(List<dynamic> inputList) {
     return hasil;
   }
 
+SnackBar PesanSnackBar(String Pesan){
+  return SnackBar(
+    content: Text(Pesan),
+    behavior: SnackBarBehavior.floating,
+    duration: Duration(seconds: 3),
+    action: SnackBarAction(
+      onPressed: (){},
+      label: "Okay",
+    ),
+  );
+}
+
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onTap;
@@ -438,7 +385,6 @@ class BottomNavBar extends StatelessWidget {
           label: 'About',
         ),
       ],
-        
       currentIndex: selectedIndex,
       onTap: onTap,
     );
