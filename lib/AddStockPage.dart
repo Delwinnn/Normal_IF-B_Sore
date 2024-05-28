@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 XFile? _image = null;
 final ImagePicker _picker = ImagePicker();
-int? valimg = 0;
+int? _valimg = 0;
 
 class AddStock extends StatefulWidget {
   const AddStock({super.key});
@@ -19,7 +19,7 @@ class AddStock extends StatefulWidget {
 }
 
 class _AddStockState extends State<AddStock> {
-  TextEditingController link = TextEditingController();
+  TextEditingController _link = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController brand = TextEditingController();
   TextEditingController stock = TextEditingController();
@@ -29,7 +29,7 @@ class _AddStockState extends State<AddStock> {
   void dispose() {
     super.dispose();
     _image = null;
-    valimg = 0;
+    _valimg = 0;
   }
 
   @override
@@ -63,21 +63,21 @@ class _AddStockState extends State<AddStock> {
                   fit: BoxFit.contain,
                 ),
               )
-              else if(link.text != "")
+              else if(_link.text != "")
               Center(
                 child: Image(
-                  image: NetworkImage(link.text),
+                  image: NetworkImage(_link.text),
                   height: 200,
                   width: 200,
                 ),
               ),
-              if(valimg == 1)
+              if(_valimg == 1)
               Row(
                 children: [
                   Expanded(
                     child: TextField(
                       maxLines: null,
-                      controller: link,
+                      controller: _link,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black), 
@@ -131,7 +131,7 @@ class _AddStockState extends State<AddStock> {
                                   ListTile(
                                     onTap:() async {
                                       Navigator.pop(context);
-                                      valimg = 0;
+                                      _valimg = 0;
                                       final XFile? image = await _picker.pickImage(source: ImageSource.camera);
                                       setState(() {
                                         _image = image;
@@ -143,7 +143,7 @@ class _AddStockState extends State<AddStock> {
                                   ListTile(
                                     onTap:() async {
                                       Navigator.pop(context);
-                                      valimg = 0;
+                                      _valimg = 0;
                                       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
                                       setState(() {
                                         _image = image;
@@ -156,7 +156,7 @@ class _AddStockState extends State<AddStock> {
                                     onTap:() {
                                       Navigator.pop(context);
                                       setState(() {
-                                        valimg=1;
+                                        _valimg=1;
                                       });
                                     },
                                     leading: Icon(Icons.link_outlined,size: 30,),
@@ -171,15 +171,15 @@ class _AddStockState extends State<AddStock> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: valimg==0 && _image==null ? EdgeInsets.all(30) : EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                    padding: _valimg==0 && _image==null ? EdgeInsets.all(30) : EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                     backgroundColor: Colors.grey[300],
                     foregroundColor: Colors.grey[800],
                     shape: RoundedRectangleBorder(
-                      borderRadius: valimg==0 && _image==null ? BorderRadius.circular(15) : BorderRadius.circular(30)
+                      borderRadius: _valimg==0 && _image==null ? BorderRadius.circular(15) : BorderRadius.circular(30)
                     ),
                     elevation: 5,
                   ),
-                  child: valimg==0 && _image==null 
+                  child: _valimg==0 && _image==null 
                   ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -285,10 +285,10 @@ class _AddStockState extends State<AddStock> {
                   ElevatedButton.icon(
                     onPressed: () {
                       setState(() {
-                        List item = valimg==0 
+                        List item = _valimg==0 
                         ? [_image, name.text, brand.text, valstock, stock.text] 
-                        : [link.text, name.text, brand.text, valstock, stock.text];
-                        Provider.of<ProviderGudang>(context,listen: false).addStock(context, item, valimg);
+                        : [_link.text, name.text, brand.text, valstock, stock.text];
+                        Provider.of<ProviderGudang>(context,listen: false).addStock(context, item, _valimg);
                       });
                     }, 
                     style: ElevatedButton.styleFrom(
