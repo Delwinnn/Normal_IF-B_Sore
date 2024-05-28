@@ -1,4 +1,4 @@
-import 'package:agile_git/HistoryPage.dart';
+import 'package:agile_git/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class CardStock extends StatelessWidget {
@@ -10,7 +10,7 @@ class CardStock extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => HistoryPage(name: produk[1]) ,)
+          MaterialPageRoute(builder: (context) => InfoProduct(data: produk,))
         );
       },
       child: Container(
@@ -24,7 +24,11 @@ class CardStock extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            produk[0],
+            Container(
+              width: 90,
+              height: 90,
+              child: produk[0],
+            ),
             SizedBox(width: 20),
             Expanded(
               child: Column(
