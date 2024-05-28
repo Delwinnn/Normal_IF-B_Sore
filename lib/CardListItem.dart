@@ -1,5 +1,7 @@
+import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ListItem extends StatelessWidget {
   final List data;
@@ -7,6 +9,9 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List allproduct = Provider.of<ProviderGudang>(context,listen: false).Gudang.product;
+    List onlyname = allproduct.map((e) => e[1]).toList();
+    int indexproduct = onlyname.indexOf(data[0]);
     return Row( 
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,7 +23,7 @@ class ListItem extends StatelessWidget {
             color: Colors.grey[200],
             borderRadius: BorderRadius.circular(10),
           ),
-          child: data[0]
+          child: allproduct[indexproduct][0]
         ),
         Expanded(
           child: Container(
@@ -27,7 +32,7 @@ class ListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("${data[1]}",
+                Text("${data[0]}",
                   style: TextStyle(fontSize: 16), maxLines: 2,overflow: TextOverflow.ellipsis,
                   ),
                 Row(
@@ -38,9 +43,9 @@ class ListItem extends StatelessWidget {
                         locale: 'id_ID',
                         symbol: 'Rp. ',
                         decimalDigits: 0,
-                      ).format(data[2]),
+                      ).format(data[1]),
                       style: TextStyle(fontSize: 15)),
-                    Text("${data[3]}x")
+                    Text("${data[2]}x")
                   ],
                 ),
                 Row(
@@ -51,7 +56,7 @@ class ListItem extends StatelessWidget {
                         locale: 'id_ID',
                         symbol: 'Rp. ',
                         decimalDigits: 2,
-                      ).format(data[2]*data[3]),
+                      ).format(data[1]*data[2]),
                       style: TextStyle(fontSize: 15))
                   ],
                 )
