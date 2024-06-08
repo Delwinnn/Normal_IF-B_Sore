@@ -11,7 +11,11 @@ class AboutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        return Future.value(false); 
+      },
+      child:  Scaffold(
       appBar: AppBar(
         title: const Text('About',
           style: TextStyle(color: Colors.white, ),
@@ -94,6 +98,7 @@ class AboutView extends StatelessWidget {
           }
           },
       ),
+    ),
     );
   }
 }

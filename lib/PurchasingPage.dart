@@ -28,7 +28,11 @@ class _PurchasingViewState extends State<PurchasingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        return Future.value(false); 
+      },
+      child: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -128,6 +132,7 @@ class _PurchasingViewState extends State<PurchasingView> {
           }
           },
       ),
+    ),
     );
   }
 }

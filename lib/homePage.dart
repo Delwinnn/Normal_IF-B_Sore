@@ -26,7 +26,11 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final indexUser = widget.data.user[0].indexOf(widget.user); 
-    return Scaffold(
+      return WillPopScope(
+      onWillPop: () async {
+        return Future.value(false); 
+      },
+      child: Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
@@ -154,6 +158,6 @@ class _HomeViewState extends State<HomeView> {
           }
           },
       ),
-    );
+    ),);
   }
 }
