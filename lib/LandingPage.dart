@@ -7,11 +7,7 @@ class Landing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return Future.value(false); 
-      },
-      child: Center(
+    return Center(
         child: Scaffold(
           body: Container(
             width: double.infinity,
@@ -85,7 +81,6 @@ class Landing extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
