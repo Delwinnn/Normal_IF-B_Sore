@@ -146,7 +146,6 @@ class _AddTransactionState extends State<AddTransaction> {
                                   qty.text = "${e[2]}";
                                   isEdit = true;
                                   index = ordered.indexOf(e);
-                                  print(index);
                                 });
                               }, 
                               icon: Icon(Icons.edit,), 
