@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Company{
   String companyname;
@@ -332,13 +331,13 @@ void updatePassword(String username, String oldPassword, String newPassword) {
       typee == "Sales" 
       ? Gudang.sales.add(alldata)
       : Gudang.purchase.add(alldata);
-      List data = Gudang.product;
       for (int i = 0 ; i<dataorder[2].length ; i++) {
-        for (int j = 0 ; j<data.length ; j++) {
-          if (data[j].contains(dataorder[2][i][1])) {
+        for (int j = 0 ; j<Gudang.product.length ; j++) {
+
+          if (Gudang.product[j].contains(dataorder[2][i][0])) {
             typee == "Sales" 
-            ? data[j][3] = data[j][3]-dataorder[2][i][2] 
-            : data[j][3] = data[j][3]+dataorder[2][i][2];
+            ? Gudang.product[j][3] = Gudang.product[j][3]-dataorder[2][i][2] 
+            : Gudang.product[j][3] = Gudang.product[j][3]+dataorder[2][i][2];
           }
         }
       }
@@ -356,15 +355,17 @@ List<dynamic> newList(List<dynamic> inputList) {
     return hasil;
   }
 
-SnackBar PesanSnackBar(String Pesan){
+SnackBar PesanSnackBar(String Pesan, bool status){
   return SnackBar(
-    content: Text(Pesan),
+    content: Row(
+      children: [
+        Icon(status == true ? Icons.check_circle : Icons.cancel ,color: status == true ? Colors.green : Colors.red ,),
+        SizedBox(width: 10,),
+        Text(Pesan)
+      ],
+    ),
     behavior: SnackBarBehavior.floating,
     duration: Duration(seconds: 3),
-    action: SnackBarAction(
-      onPressed: (){},
-      label: "Okay",
-    ),
   );
 }
 
