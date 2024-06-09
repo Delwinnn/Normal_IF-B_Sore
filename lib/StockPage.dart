@@ -115,28 +115,7 @@ class _StockViewState extends State<StockView> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: 0,
-        onTap: (index) {
-          
-          switch (index) {
-            case 0:
-              break;
-            case 1:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PurchasingView()));
-              break;
-            case 2:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser)));
-              break;
-            case 3:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
-              break;
-            case 4:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutView()));
-              break;
-          }
-          },
-      ),
+      
     ),
      );
   }

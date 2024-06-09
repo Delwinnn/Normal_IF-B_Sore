@@ -1,5 +1,5 @@
+import 'package:agile_git/FirstPage.dart';
 import 'package:agile_git/RegisterPage.dart';
-import 'package:agile_git/homePage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -125,13 +125,7 @@ class _LoginViewState extends State<LoginView> {
                               .Gudang
                               .usinguser = account[0][index];
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => HomeView(
-                                  data: Provider.of<ProviderGudang>(context)
-                                      .Gudang,
-                                  fitur: listfitur,
-                                  user: Provider.of<ProviderGudang>(context)
-                                      .Gudang
-                                      .usinguser)));
+                              builder: (context) => FirstPage()));
                           user.clear();
                           pass.clear();
                         } else {

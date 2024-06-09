@@ -110,28 +110,7 @@ class _PurchasingViewState extends State<PurchasingView> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: 1,
-        onTap: (index) {
-          
-          switch (index) {
-            case 0:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => StockView()));              
-              break;
-            case 1:
-              break;
-            case 2:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeView(data: Provider.of<ProviderGudang>(context).Gudang, fitur: listfitur, user: Provider.of<ProviderGudang>(context).Gudang.usinguser)));
-              break;
-            case 3:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
-              break;
-            case 4:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutView()));
-              break;
-          }
-          },
-      ),
+      
     ),
     );
   }
