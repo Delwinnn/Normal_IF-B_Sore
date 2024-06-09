@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Company{
   String companyname;
@@ -137,6 +138,42 @@ class ProviderGudang extends ChangeNotifier{
       15000000],
     ],
   );
+
+  int totalpurchase (){
+    int total = 0;
+    for (var data in Gudang.purchase) {
+      total += int.parse(data[5].toString());
+    }
+    return total;
+  }
+
+  int totalsales (){
+    int total = 0;
+    for (var data in Gudang.sales) {
+      total += int.parse(data[5].toString());
+    }
+    return total;
+  }
+
+  int totalqpurchase () {
+    int total = 0;
+    for (var data in Gudang.purchase) {
+      for (var x in data[4]){
+        total += int.parse(x[2].toString());
+      }
+    }
+    return total;
+  }
+
+  int totalqsales () {
+    int total = 0;
+    for (var data in Gudang.sales) {
+      for (var x in data[4]){
+        total += int.parse(x[2].toString());
+      }
+    }
+    return total;
+  }
 
   void updateUsername(String oldUsername, String newUsername) {
   int userIndex = Gudang.user[0].indexOf(oldUsername);
@@ -311,16 +348,6 @@ void updatePassword(String username, String oldPassword, String newPassword) {
   }
 }
 
-List<dynamic> listfitur = [[
-  
-    Icons.attach_money,
-    Icons.sell,
-    Icons.warehouse,
-    Icons.info
-  ],[
-    "Purchasing","Sales","Stock","About"
-  ]];
-
 List<dynamic> newList(List<dynamic> inputList) {
     List hasil = [];
     inputList.forEach((subList) {
@@ -341,52 +368,11 @@ SnackBar PesanSnackBar(String Pesan){
   );
 }
 
-class BottomNavBar extends StatelessWidget {
-  final int selectedIndex;
-  final Function(int) onTap;
+class BottomNav extends ChangeNotifier{
+  int currentpage = 2;
 
-  const BottomNavBar({
-    required this.selectedIndex,
-    required this.onTap,
-  });
-
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        unselectedLabelStyle: TextStyle(color: Colors.grey),
-      items: const <BottomNavigationBarItem>[    
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.warehouse),
-          label: 'Stock',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.attach_money),
-          label: 'Purchasing',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.house_sharp),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.sell),
-          label: 'Sales',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.info),
-          label: 'About',
-        ),
-      ],
-      currentIndex: selectedIndex,
-      onTap: onTap,
-    );
+  void goPage(val) {
+    currentpage = val;
+    notifyListeners();
   }
 }
