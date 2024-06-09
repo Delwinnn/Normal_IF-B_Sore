@@ -1,9 +1,5 @@
-import 'package:agile_git/AboutPage.dart';
 import 'package:agile_git/AddStockPage.dart';
 import 'package:agile_git/CardStock.dart';
-import 'package:agile_git/PurchasingPage.dart';
-import 'package:agile_git/SalesPage.dart';
-import 'package:agile_git/homePage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +18,34 @@ class _StockViewState extends State<StockView> {
   List datastock = [];
   List filtered = [];
 
+  void sortProducts(String sortBy) {
+    setState(() {
+      List data = List.from(datastock);
+      List filter = List.from(filtered);
+      if (sortBy == "Product") {
+        data.sort((a, b) => a[1].compareTo(b[1]));
+        filter.sort((a, b) => a[1].compareTo(b[1]));
+        datastock = data;
+        filtered = filter;
+      } else if (sortBy == "Stock") {
+        data.sort((a, b) => a[3].compareTo(b[3]));
+        filter.sort((a, b) => a[3].compareTo(b[3]));
+        datastock = data;
+        filtered = filter;
+      } else if (sortBy == "RProduct") {
+        data.sort((a, b) => b[1].compareTo(a[1]));
+        filter.sort((a, b) => b[1].compareTo(a[1]));
+        datastock = data;
+        filtered = filter;
+      } else if (sortBy == "RStock") {
+        data.sort((a, b) => b[3].compareTo(a[3]));
+        filter.sort((a, b) => b[3].compareTo(a[3]));
+        datastock = data;
+        filtered = filter;
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -36,9 +60,13 @@ class _StockViewState extends State<StockView> {
       },
       child: Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,      
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         title: Text("Stock", style: TextStyle(color: Colors.white),),
+        actions: [
+          sortMenu(context,sortProducts)
+        ],
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -79,7 +107,7 @@ class _StockViewState extends State<StockView> {
                 child: Column(
                   children: [
                     ...search.text == ""
-                    ? Provider.of<ProviderGudang>(context).Gudang.product.map<Widget>((item) {
+                    ? datastock.map<Widget>((item) {
                       return CardStock(produk: item);
                     })
                     : filtered.map<Widget>((item) {
@@ -119,4 +147,69 @@ class _StockViewState extends State<StockView> {
     ),
      );
   }
+}
+
+Widget sortMenu(BuildContext context, Function(String) onSortSelected){
+  return PopupMenuButton(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Sort by ", style: TextStyle(color: Colors.white,fontSize: 15)),
+        Icon(Icons.sort, color: Colors.white,size: 20,),
+        SizedBox(width: 8,)
+      ],
+    ),
+    offset: Offset(0, 35),
+    color: Colors.white,
+    itemBuilder: (context) => <PopupMenuEntry>[
+      PopupMenuItem(
+        child: Row(
+          children: [
+            Text("A-Z"),
+            SizedBox(width: 5,),
+            Text("Product",style: TextStyle(color: Colors.black),)
+          ]
+        ),
+        onTap: () {
+          onSortSelected("Product");
+        },
+      ),
+      PopupMenuItem(
+        child: Row(
+          children: [
+            Text("Z-A"),
+            SizedBox(width: 5,),
+            Text("Product",style: TextStyle(color: Colors.black),)
+          ]
+        ),
+        onTap: () {
+          onSortSelected("RProduct");
+        },
+      ),
+      PopupMenuItem(
+        child: Row(
+          children: [
+            Text("0-9"),
+            SizedBox(width: 5,),
+            Text("Stock",style: TextStyle(color: Colors.black),)
+          ]
+        ),
+        onTap: () {
+          onSortSelected("Stock");
+        },
+      ),
+      PopupMenuItem(
+        child: Row(
+          children: [
+            Text("9-0"),
+            SizedBox(width: 5,),
+            Text("Stock",style: TextStyle(color: Colors.black),)
+          ]
+        ),
+        onTap: () {
+          onSortSelected("RStock");
+        },
+      ),
+    ]
+  );
 }
