@@ -126,15 +126,18 @@ class _LoginViewState extends State<LoginView> {
                               .usinguser = account[0][index];
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => FirstPage()));
+                          ScaffoldMessenger.of(context).showSnackBar(PesanSnackBar("Login Successfull",true));
                           user.clear();
                           pass.clear();
                         } else {
                           isCocok = false;
                           pass.clear();
+                          ScaffoldMessenger.of(context).showSnackBar(PesanSnackBar("Login Failed!",false));
                         }
                       } else {
                         isCocok = false;
                         pass.clear();
+                        ScaffoldMessenger.of(context).showSnackBar(PesanSnackBar("Login Failed!",false));
                       }
                     });
                   },
