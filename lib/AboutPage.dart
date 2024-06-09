@@ -1,10 +1,4 @@
-import 'package:agile_git/PurchasingPage.dart';
-import 'package:agile_git/SalesPage.dart';
-import 'package:agile_git/StockPage.dart';
-import 'package:agile_git/homePage.dart';
-import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -17,6 +11,7 @@ class AboutView extends StatelessWidget {
       },
       child:  Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('About',
           style: TextStyle(color: Colors.white, ),
         ),

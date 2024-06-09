@@ -1,9 +1,5 @@
-import 'package:agile_git/AboutPage.dart';
 import 'package:agile_git/AddtransactionPage.dart';
 import 'package:agile_git/CardTransaksi.dart';
-import 'package:agile_git/SalesPage.dart';
-import 'package:agile_git/StockPage.dart';
-import 'package:agile_git/homePage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +30,7 @@ class _PurchasingViewState extends State<PurchasingView> {
       },
       child: Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         title: Text("Purchasing", style: TextStyle(color: Colors.white),),

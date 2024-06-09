@@ -124,7 +124,7 @@ class _HomeViewState extends State<HomeView> {
                                       NumberFormat.currency(
                                       locale: 'id_ID',
                                       symbol: 'Rp. ',
-                                      decimalDigits: 2,
+                                      decimalDigits: 0,
                                     ).format(total[index])),
                                     SizedBox(height: 10,),
                                     Text("Total Quantity",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
@@ -140,6 +140,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               ),
+              if(indexUser == 0)
               Padding(
                 padding: EdgeInsets.all(10),
                 child: ElevatedButton(
