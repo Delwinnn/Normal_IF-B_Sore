@@ -4,16 +4,19 @@ import 'package:agile_git/PurchasingPage.dart';
 import 'package:agile_git/SalesPage.dart';
 import 'package:agile_git/StockPage.dart';
 import 'package:agile_git/provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'ProfilePage.dart';
 
 class HomeView extends StatefulWidget {
   final Company data;
   final String user;
-  final List<dynamic> fitur;
   final dynamic tujuan;
 
-  HomeView({Key? key, required this.data, required this.fitur, required this.user})
+  HomeView({Key? key, required this.data, required this.user})
       : tujuan = [PurchasingView(), SalesView(), StockView(), AboutView(), ProfilePage()],
         super(key: key);
 
@@ -25,6 +28,13 @@ class _HomeViewState extends State<HomeView> {
   int select = 2;
   @override
   Widget build(BuildContext context) {
+    int totalpurchase = Provider.of<ProviderGudang>(context).totalpurchase();
+    int totalsales = Provider.of<ProviderGudang>(context).totalsales();
+    int totalqpurchase = Provider.of<ProviderGudang>(context).totalqpurchase();
+    int totalqsales = Provider.of<ProviderGudang>(context).totalqsales();
+    List<int> total = [totalpurchase,totalsales];
+    List<int> totalq = [totalqpurchase,totalqsales];
+    List labelperform = ["Purchase", "Sales"];
     final indexUser = widget.data.user[0].indexOf(widget.user); 
       return WillPopScope(
       onWillPop: () async {
@@ -65,44 +75,70 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             children: [
               Text(
-                'Hello ${widget.user}...',
+                'Welcome ${widget.user}...',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+              SizedBox(height: 15,),
+              Image.asset(
+                'assets/logo.png',
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
+              SizedBox(height: 15,),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: Card(
+                  elevation: 7,
+                  color: Colors.blue,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Text("Performance",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize: 20),)
+                      ),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2
+                        ),
+                        itemCount: 2,
+                        padding: EdgeInsets.all(5),
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.all(0),
+                            child: Card(
+                              color: Colors.white,
+                              elevation: 8,
+                              child: Container(
+                                padding: EdgeInsets.all(7),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("${labelperform[index]}",style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                                    SizedBox(height: 2,),
+                                    Divider(),
+                                    SizedBox(height: 2,),
+                                    Text("Total Transaction",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+                                    Text(
+                                      NumberFormat.currency(
+                                      locale: 'id_ID',
+                                      symbol: 'Rp. ',
+                                      decimalDigits: 2,
+                                    ).format(total[index])),
+                                    SizedBox(height: 10,),
+                                    Text("Total Quantity",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+                                    Text("${totalq[index]}"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      )
+                    ],
+                  ),
                 ),
-                itemCount: 4,
-                itemBuilder: (context, i) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => widget.tujuan[i],)
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            widget.fitur[0][i],
-                            size: 65,
-                          ),
-                          Text(
-                            widget.fitur[1][i],
-                            style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
               ),
               Padding(
                 padding: EdgeInsets.all(10),
@@ -134,30 +170,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(
-        selectedIndex: select,
-        onTap: (index) {
-          setState(() {
-            select = index;
-          });
-          switch (index) {
-            case 0:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => StockView()));
-              break;
-            case 1:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => PurchasingView()));
-              break;
-            case 2:
-              break;
-            case 3:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SalesView()));
-              break;
-            case 4:
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => AboutView()));
-              break;
-          }
-          },
-      ),
+      
     ),);
   }
 }
