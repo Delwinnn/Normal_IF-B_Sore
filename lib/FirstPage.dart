@@ -61,7 +61,7 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           backgroundColor: Colors.black,
           icon: Icon(Icons.attach_money),
-          label: 'Purchasing',
+          label: 'Purchase',
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.black,
