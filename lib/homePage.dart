@@ -56,15 +56,18 @@ class _HomeViewState extends State<HomeView> {
                 MaterialPageRoute(builder: (context) => ProfilePage()),
               );
             },
-            child: Row(
-              children: [
-                SizedBox(width: 8), 
-                CircleAvatar(
-                  radius: 20, 
-                  backgroundImage: NetworkImage("${widget.data.user[2][indexUser]}"),
-                ),
-                SizedBox(width: 8),
-              ],
+            child: Tooltip(
+              message: "Profile",
+              child: Row(
+                children: [
+                  SizedBox(width: 8), 
+                  CircleAvatar(
+                    radius: 20, 
+                    backgroundImage: NetworkImage("${widget.data.user[2][indexUser]}"),
+                  ),
+                  SizedBox(width: 8),
+                ],
+              ),
             ),
           ),
         ],

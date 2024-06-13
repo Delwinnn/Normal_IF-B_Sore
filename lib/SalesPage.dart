@@ -86,24 +86,27 @@ class _SalesViewState extends State<SalesView> {
           ]
         )
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AddTransaction(type: "Sales",),)
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
-          elevation: 7,
-          padding: EdgeInsets.all(18),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.add,size: 28,),
-          ],
+      floatingActionButton: Tooltip(
+        message: "Add Transaction",
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => AddTransaction(type: "Sales",),)
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            elevation: 7,
+            padding: EdgeInsets.all(18),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.add,size: 28,),
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

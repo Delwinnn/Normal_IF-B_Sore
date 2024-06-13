@@ -120,26 +120,29 @@ class _StockViewState extends State<StockView> {
           ]
         )
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          setState(() {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => AddStock(),)
-            );
-          });
-        },
-        style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
-          elevation: 7,
-          padding: EdgeInsets.all(18),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.add,size: 28,),
-          ],
+      floatingActionButton: Tooltip(
+        message: "New Product",
+        child: ElevatedButton(
+          onPressed: () {
+            setState(() {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => AddStock(),)
+              );
+            });
+          },
+          style: ElevatedButton.styleFrom(
+            shape: CircleBorder(),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white,
+            elevation: 7,
+            padding: EdgeInsets.all(18),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.add,size: 28,),
+            ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -151,13 +154,15 @@ class _StockViewState extends State<StockView> {
 
 Widget sortMenu(BuildContext context, Function(String) onSortSelected){
   return PopupMenuButton(
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Sort by ", style: TextStyle(color: Colors.white,fontSize: 15)),
-        Icon(Icons.sort, color: Colors.white,size: 20,),
-        SizedBox(width: 8,)
-      ],
+    child: Tooltip(
+      message: "Sort by",
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.sort, color: Colors.white,size: 20,),
+          SizedBox(width: 8,)
+        ],
+      ),
     ),
     offset: Offset(0, 35),
     color: Colors.white,
