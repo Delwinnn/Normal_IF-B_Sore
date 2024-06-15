@@ -6,6 +6,8 @@ import 'package:agile_git/homePage.dart';
 import 'package:agile_git/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -43,44 +45,21 @@ class BottomNavBar extends StatelessWidget {
     required this.onTap,
   });
 
-
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        unselectedLabelStyle: TextStyle(color: Colors.grey),
-      items: const <BottomNavigationBarItem>[    
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.warehouse),
-          label: 'Stock',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.attach_money),
-          label: 'Purchase',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.house_sharp),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.sell),
-          label: 'Sales',
-        ),
-        BottomNavigationBarItem(
-          backgroundColor: Colors.black,
-          icon: Icon(Icons.info),
-          label: 'About',
-        ),
-      ],
-      currentIndex: Provider.of<BottomNav>(context).currentpage,
+    return CurvedNavigationBar(
+      backgroundColor: Colors.white,
+      color: Colors.blue,
+      buttonBackgroundColor: Colors.blue,
       onTap: onTap,
+       items: <Widget>[
+        Icon(Icons.warehouse, size: 30, color: Colors.white),
+        Icon(Icons.attach_money, size: 30, color: Colors.white),
+        Icon(Icons.house_sharp, size: 30, color: Colors.white),
+        Icon(Icons.sell, size: 30, color: Colors.white),
+        Icon(Icons.info, size: 30, color: Colors.white), 
+    ],
+      index: Provider.of<BottomNav>(context).currentpage,
     );
   }
 }
