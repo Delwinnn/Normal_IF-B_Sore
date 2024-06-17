@@ -268,6 +268,53 @@ class _InfoProductState extends State<InfoProduct> {
               Text("Stock : ",style: TextStyle(fontSize: 13),),
               Text("${widget.data[3]}",style: TextStyle(fontSize: 18),),
               SizedBox(height: 15,),
+              if (indexUser == 0)
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text("Alert"),
+                          content: Text("Are you sure you want to delete product?"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                "Cancel",
+                                style: TextStyle(color: Colors.grey[800]),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Provider.of<ProviderGudang>(context,listen: false).removeproduct(widget.data);
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pop();
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.red,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              ),
+                              child: Text("Delete", style: TextStyle(color: Colors.white)),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }, 
+                  style: ElevatedButton.styleFrom(
+                    elevation: 3,
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white
+                  ),
+                  icon: Icon(Icons.delete), 
+                  label: Text("Delete Product")
+                ),
+              ),
+              SizedBox(height: 15,),
               Divider(
                 thickness: 1,
                 height: 10,
@@ -319,13 +366,13 @@ class _InfoProductState extends State<InfoProduct> {
                                 Row(
                                   mainAxisAlignment:MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Quantity: ${e[4][i][2]}'),
+                                    Text('Quantity: ${e[4][i][3]}'),
                                     Text('Price: ${
                                       NumberFormat.currency(
                                         locale: 'id_ID',
                                         symbol: '',
                                         decimalDigits: 0,
-                                      ).format(e[4][i][1])
+                                      ).format(e[4][i][2])
                                     }'),
                                     ],
                                 ),
@@ -342,7 +389,7 @@ class _InfoProductState extends State<InfoProduct> {
                                         locale: 'id_ID',
                                         symbol: 'Rp. ',
                                         decimalDigits: 2,
-                                      ).format(e[4][i][2]*e[4][i][1]),
+                                      ).format(e[4][i][3]*e[4][i][2]),
                                     ),
                                   ],
                                 ),
