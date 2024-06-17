@@ -140,10 +140,10 @@ class _AddTransactionState extends State<AddTransaction> {
                             ElevatedButton.icon(
                               onPressed: () {
                                 setState(() {
-                                  item.text = e[0];
+                                  item.text = e[1];
                                   product=e;
-                                  price.text = "${e[1]}";
-                                  qty.text = "${e[2]}";
+                                  price.text = "${e[2]}";
+                                  qty.text = "${e[3]}";
                                   isEdit = true;
                                   index = ordered.indexOf(e);
                                 });
@@ -162,7 +162,7 @@ class _AddTransactionState extends State<AddTransaction> {
                                   ordered.remove(e);
                                   total = 0;
                                   for (int x = 0 ; x<ordered.length ; x++ ) {
-                                    int jumlah = ordered[x][1]*ordered[x][2];
+                                    int jumlah = ordered[x][2]*ordered[x][3];
                                     total+=jumlah;
                                   }
                                 });
@@ -212,7 +212,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     children: [
                       Expanded(
                         child: Container(
-                          height: 50,
+                          height: 60,
                           child: TextField(
                             controller: price,
                             textAlign: TextAlign.left,
@@ -236,7 +236,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       ),
                       SizedBox(width: 15,),
                       Container(
-                        height: 50,
+                        height: 60,
                         width: MediaQuery.of(context).size.width/5.5,
                         child: TextField(
                           controller: qty,
@@ -306,11 +306,11 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[0].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered[index] = x;
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
-                                int jumlah = ordered[x][1]*ordered[x][2];
+                                int jumlah = ordered[x][2]*ordered[x][3];
                                 total+=jumlah;
                               }
                               item.text = "";
@@ -363,11 +363,11 @@ class _AddTransactionState extends State<AddTransaction> {
                               });
                             }
                             else{
-                              List <dynamic> x = [product[1].toString(),int.parse(price.text),int.parse(qty.text)];
+                              List <dynamic> x = [product[0],product[1].toString(),int.parse(price.text),int.parse(qty.text)];
                               ordered.add(x);
                               total = 0;
                               for (int x = 0 ; x<ordered.length ; x++ ) {
-                                int jumlah = ordered[x][1]*ordered[x][2];
+                                int jumlah = ordered[x][2]*ordered[x][3];
                                 total+=jumlah;
                               }
                               item.text = "";
