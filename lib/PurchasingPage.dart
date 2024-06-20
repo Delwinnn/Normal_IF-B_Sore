@@ -100,7 +100,8 @@ class _PurchasingViewState extends State<PurchasingView> {
             ]
           )
         ),
-        floatingActionButton: Tooltip(
+        floatingActionButton: !Provider.of<ProviderGudang>(context).Gudang.user[3][indexUser][4] ? null 
+        : Tooltip(
           message: "Add Transaction",
           child: ElevatedButton(
             onPressed: () {
