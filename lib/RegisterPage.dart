@@ -212,7 +212,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                               } else {
                                 isKey = true;
                                 isSame = false;
-                                Provider.of<ProviderGudang>(context,listen: false).addAccount(user.text.toUpperCase(), pass.text, "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg", [false,false,false,false]);
+                                Provider.of<ProviderGudang>(context,listen: false).addAccount(user.text.toUpperCase(), pass.text, "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg", [false,false,false,false,false]);
                                 user.clear();
                                 pass.clear();
                                 kunci.clear();
