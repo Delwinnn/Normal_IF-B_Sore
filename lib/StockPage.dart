@@ -54,6 +54,8 @@ class _StockViewState extends State<StockView> {
 
   @override
   Widget build(BuildContext context) {
+    ProviderGudang prov = Provider.of<ProviderGudang>(context,listen: false);
+    int indexUser = prov.Gudang.user[0].indexOf(prov.Gudang.usinguser);
      return WillPopScope(
       onWillPop: () async {
         return Future.value(false); 
@@ -120,33 +122,34 @@ class _StockViewState extends State<StockView> {
           ]
         )
       ),
-      floatingActionButton: Tooltip(
-        message: "New Product",
-        child: ElevatedButton(
-          onPressed: () {
-            setState(() {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => AddStock(),)
-              );
-            });
-          },
-          style: ElevatedButton.styleFrom(
-            shape: CircleBorder(),
-            backgroundColor: Colors.blue,
-            foregroundColor: Colors.white,
-            elevation: 7,
-            padding: EdgeInsets.all(18),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.add,size: 28,),
-            ],
+      floatingActionButton: !Provider.of<ProviderGudang>(context).Gudang.user[3][indexUser][1] 
+        ? null
+        : Tooltip(
+          message: "New Product",
+          child: ElevatedButton(
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => AddStock(),)
+                );
+              });
+            },
+            style: ElevatedButton.styleFrom(
+              shape: CircleBorder(),
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              elevation: 7,
+              padding: EdgeInsets.all(18),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.add,size: 28,),
+              ],
+            ),
           ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     ),
      );
   }

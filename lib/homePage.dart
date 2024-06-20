@@ -143,7 +143,7 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
               ),
-              if(indexUser == 0)
+              if(Provider.of<ProviderGudang>(context).Gudang.user[3][indexUser][0])
               Padding(
                 padding: EdgeInsets.all(10),
                 child: ElevatedButton(

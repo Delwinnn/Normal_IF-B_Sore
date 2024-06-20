@@ -131,7 +131,7 @@ class _InfoProductState extends State<InfoProduct> {
                   ]
                 ),
               ),
-              if (editing == false && indexUser == 0)
+              if (editing == false && Provider.of<ProviderGudang>(context).Gudang.user[3][indexUser][2])
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () {
@@ -268,7 +268,7 @@ class _InfoProductState extends State<InfoProduct> {
               Text("Stock : ",style: TextStyle(fontSize: 13),),
               Text("${widget.data[3]}",style: TextStyle(fontSize: 18),),
               SizedBox(height: 15,),
-              if (indexUser == 0)
+              if (Provider.of<ProviderGudang>(context).Gudang.user[3][indexUser][2])
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () {

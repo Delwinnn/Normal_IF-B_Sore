@@ -38,7 +38,8 @@ class ProviderGudang extends ChangeNotifier{
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIgp6aJcoa9_mornRyWV1vDfEVlkN9mPImV4x-uz1XYQ&s",
         "https://i.pinimg.com/736x/da/4a/fa/da4afa2d21a74a4f829f86971e826b69.jpg",
         "https://i.pinimg.com/736x/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
-      ]
+      ],
+      [[true,true,true,true,true],[false,false,false,true,false],[false,true,false,false,true]]
     ], 
     product: [
       [Image(
@@ -208,6 +209,11 @@ class ProviderGudang extends ChangeNotifier{
     ],
   );
 
+  void changefeature(int indexuser, int urutanfitur) {
+    Gudang.user[3][indexuser][urutanfitur] = !Gudang.user[3][indexuser][urutanfitur];
+    notifyListeners();
+  }
+
   void removeproduct(List x) {
     Gudang.product.remove(x);
     notifyListeners();
@@ -351,9 +357,11 @@ void updatePassword(String username, String oldPassword, String newPassword) {
     notifyListeners();
   }
 
-  void addAccount(String x, String y) {
-    Gudang.user[0].add(x);
-    Gudang.user[1].add(y);
+  void addAccount(String w, String x, String y, List<bool> z) {
+    Gudang.user[0].add(w);
+    Gudang.user[1].add(x);
+    Gudang.user[2].add(y);
+    Gudang.user[3].add(z);
     notifyListeners();
   }
 

@@ -19,7 +19,6 @@ class _AccountViewState extends State<AccountView> {
   final List<dynamic> user = Provider.of<ProviderGudang>(context).Gudang.user[0];
   final List<dynamic> pass = Provider.of<ProviderGudang>(context).Gudang.user[1];
   final List<dynamic> picture = Provider.of<ProviderGudang>(context).Gudang.user[2];
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Account',
@@ -31,7 +30,7 @@ class _AccountViewState extends State<AccountView> {
       body:Container(
         height: MediaQuery.of(context).size.height,
         color: Colors.grey[400],
-        padding: EdgeInsets.only(left: 7,right: 7,top: 0,bottom: 0),
+        padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -40,7 +39,7 @@ class _AccountViewState extends State<AccountView> {
               SizedBox(height: 20,),
               Column(
                 children: 
-                  user.mapIndexed((index, e) => CardAccount(acc: user[index], pwd: pass[index], pics: picture[index],)).toList()
+                  user.mapIndexed((index, e) => CardAccount(acc: user[index], pwd: pass[index], pics: picture[index],index: index,)).toList()
               ),
           ]),
         ),
