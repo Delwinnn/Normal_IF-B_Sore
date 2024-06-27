@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:agile_git/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -158,18 +157,18 @@ class _InfoProductState extends State<InfoProduct> {
                                         Navigator.pop(context);
                                         _valimg = 0;
                                         final XFile? image = await _picker.pickImage(source: ImageSource.camera);
-                                        setState(() {
-                                          if (image != null) {
-                                            _imageedit = image;
+                                        if(image!=null) {
+                                          Uint8List pic = await image.readAsBytes();
+                                          setState(() {
                                             _gambar = Image(
-                                              image: FileImage(File(_imageedit!.path)),
+                                              image: MemoryImage(pic),
                                               height: 90,
                                               width: 90,
                                               fit: BoxFit.contain,
                                             );
                                             editing = true;
-                                          }
-                                        });
+                                          });
+                                        }
                                       },
                                       leading: Icon(Icons.camera_alt_outlined,size: 30,),
                                       title: Text('Capture from Camera',style: TextStyle(fontSize: 18),),
@@ -179,18 +178,18 @@ class _InfoProductState extends State<InfoProduct> {
                                         Navigator.pop(context);
                                         _valimg = 0;
                                         final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-                                        setState(() {
-                                          if(image!=null) {
-                                            _imageedit = image;
+                                        if(image!=null) {
+                                          Uint8List pic = await image.readAsBytes();
+                                          setState(() {
                                             _gambar = Image(
-                                              image: FileImage(File(_imageedit!.path)),
+                                              image: MemoryImage(pic),
                                               height: 90,
                                               width: 90,
                                               fit: BoxFit.contain,
                                             );
                                             editing = true;
-                                          }
-                                        });
+                                          });
+                                        }
                                       },
                                       leading: Icon(Icons.photo_library_outlined,size: 30,),
                                       title: Text('Choose from Gallery',style: TextStyle(fontSize: 18),),
