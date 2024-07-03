@@ -61,10 +61,11 @@ class _HomeViewState extends State<HomeView> {
               child: Row(
                 children: [
                   SizedBox(width: 8), 
-                  CircleAvatar(
-                    radius: 20, 
-                    backgroundImage: NetworkImage("${widget.data.user[2][indexUser]}"),
-                  ),
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundImage: Provider.of<ProviderGudang>(context)
+                          .getUserImage(indexUser),
+                    ),
                   SizedBox(width: 8),
                 ],
               ),
