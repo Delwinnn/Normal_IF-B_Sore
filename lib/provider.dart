@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Company{
@@ -288,9 +288,31 @@ void updatePassword(String username, String oldPassword, String newPassword) {
 }
 
 
-  void updateUserImage(int userIndex, String newImageUrl) {
-    Gudang.user[2][userIndex] = newImageUrl;
+  void updateUserImage(int index, dynamic imageProvider) {
+    if (imageProvider is String) {
+      if (imageProvider.startsWith('http') ||
+          imageProvider.startsWith('https')) {
+        Gudang.user[2][index] = imageProvider;
+      } else {
+        final bytes = base64Decode(imageProvider);
+        Gudang.user[2][index] = base64Encode(bytes);
+      }
+    } else if (imageProvider is MemoryImage) {
+      final bytes = (imageProvider as MemoryImage).bytes;
+      final base64String = base64Encode(bytes);
+      Gudang.user[2][index] = base64String;
+    }
     notifyListeners();
+  }
+
+  ImageProvider getUserImage(int index) {
+    final userImage = Gudang.user[2][index];
+    if (userImage.startsWith('http') || userImage.startsWith('https')) {
+      return NetworkImage(userImage);
+    } else {
+      final bytes = base64Decode(userImage);
+      return MemoryImage(bytes);
+    }
   }
 
   void updateDataStock(int index, Widget? newData){
