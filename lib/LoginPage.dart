@@ -126,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                               .usinguser = account[0][index];
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => FirstPage()));
-                          ScaffoldMessenger.of(context).showSnackBar(PesanSnackBar("Login Successfull",true));
+                          ScaffoldMessenger.of(context).showSnackBar(PesanSnackBar("Login Successful",true));
                           user.clear();
                           pass.clear();
                         } else {
