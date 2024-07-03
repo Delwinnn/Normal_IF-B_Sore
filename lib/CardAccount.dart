@@ -18,9 +18,13 @@ class CardAccount extends StatefulWidget {
 
 class _CardAccountState extends State<CardAccount> {
   bool _seePass = false;
+  
   @override
   Widget build(BuildContext context) {
   final TextEditingController password = TextEditingController(text : widget.pwd);
+  final provider = Provider.of<ProviderGudang>(context);
+    final userImage = provider.getUserImage(widget.index);
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -35,10 +39,10 @@ class _CardAccountState extends State<CardAccount> {
             children: [
               Row(
                 children:[ 
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundImage: NetworkImage("${widget.pics}"), 
-                  ),
+                   CircleAvatar(
+                radius: 25,
+                backgroundImage: userImage,
+              ),
                   SizedBox(width: 15,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
