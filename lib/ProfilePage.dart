@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:agile_git/ChangeName.dart';
 import 'package:agile_git/ChangePass.dart';
 import 'package:agile_git/ChangePicture.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'dart:typed_data';
 
 
 
@@ -16,12 +17,14 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Uint8List? _imageBytes;
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProviderGudang>(context);
     final currentUser = Provider.of<ProviderGudang>(context).Gudang.usinguser;
     final index = provider.Gudang.user[0].indexOf(currentUser);
     final pass = provider.Gudang.user[1][index];
+    final ImagePicker _picker = ImagePicker();
 
     if (currentUser != "") {
       return Scaffold(
@@ -37,12 +40,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   children: [
                     Container(
-                      color: Colors.green[300],
+                      color: Colors.white,
                       padding: EdgeInsets.all(20),
                       width: MediaQuery.of(context).size.width,
-                      height: 230,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Consumer<ProviderGudang>(
@@ -50,114 +52,176 @@ class _ProfilePageState extends State<ProfilePage> {
                             int userIndex = provider.Gudang.user[0].indexOf(currentUser);
                             if (userIndex != -1) {
                               return CircleAvatar(
-                                radius: 50,
-                                backgroundImage: NetworkImage(provider.Gudang.user[2][userIndex]),
-                              );
+                                  radius: 50,
+                                  backgroundImage:
+                                      provider.getUserImage(userIndex),
+                                );
                             } else {
                               return Text("User not found!"); 
                             }
                           },
                         ),
-                        SizedBox(height: 10,),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue, 
-                              foregroundColor: Colors.white,
-                            ),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ChangePicturePage(
-                                  onUpdateImageUrl: (newImageUrl) {
-                                    provider.updateUserImage(provider.Gudang.user[0].indexOf(currentUser), newImageUrl); 
-                                  },
-                                ),
-                              ),
-                            );
-                          },
-                          child: Text("Edit"),
-                        ),
+                        SizedBox(width : 20,),
+                        ElevatedButton.icon(
+                              onPressed: () {
+                                showModalBottomSheet<void>(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) =>
+                                      DraggableScrollableSheet(
+                                    expand: false,
+                                    initialChildSize: 0.6,
+                                    builder: (context, scrollController) =>
+                                        SingleChildScrollView(
+                                      controller: scrollController,
+                                      child: Center(
+                                        child: Container(
+                                          padding: EdgeInsets.all(20),
+                                          child: Column(
+                                            children: [
+                                              Row(children: [
+                                                Text(
+                                                  "Profile Image",
+                                                  style:
+                                                      TextStyle(fontSize: 15),
+                                                )
+                                              ]),
+                                              SizedBox(
+                                                height: 15,
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  Navigator.pop(context);
+                                                  final XFile? image =
+                                                      await _picker.pickImage(
+                                                          source: ImageSource
+                                                              .camera);
+                                                  if (image != null) {
+                                                    Uint8List pic = await image
+                                                        .readAsBytes();
+                                                    setState(() {
+                                                      _imageBytes = pic;
+                                                      provider.updateUserImage(
+                                                          index,
+                                                          MemoryImage(
+                                                              _imageBytes!));
+                                                    });
+                                                  }
+                                                },
+                                                leading: Icon(
+                                                  Icons.camera_alt_outlined,
+                                                  size: 30,
+                                                ),
+                                                title: Text(
+                                                  'Capture from Camera',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  Navigator.pop(context);
+                                                  final XFile? image =
+                                                      await _picker.pickImage(
+                                                          source: ImageSource
+                                                              .gallery);
+                                                  if (image != null) {
+                                                    Uint8List pic = await image
+                                                        .readAsBytes();
+                                                    setState(() {
+                                                      _imageBytes = pic;
+                                                      provider.updateUserImage(
+                                                          index,
+                                                          MemoryImage(
+                                                              _imageBytes!));
+                                                    });
+                                                  }
+                                                },
+                                                leading: Icon(
+                                                  Icons.photo_library_outlined,
+                                                  size: 30,
+                                                ),
+                                                title: Text(
+                                                  'Choose from Gallery',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                              ),
+                                              ListTile(
+                                                onTap: () {
+                                                  Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ChangePicturePage(
+                                                        onUpdateImageUrl:
+                                                            (newImageUrl) {
+                                                          provider
+                                                              .updateUserImage(
+                                                                  index,
+                                                                  newImageUrl);
+                                                        },
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                                leading: Icon(
+                                                  Icons.link_outlined,
+                                                  size: 30,
+                                                ),
+                                                title: Text(
+                                                  'Input Link URL',
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  foregroundColor: Colors.white),
+                              icon: Icon(Icons.upload_file),
+                              label: Text("Upload Image")),
                         ],
                       ),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              child: Icon(
-                                Icons.person,
-                                size: 50,
-                              )
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Username", style: TextStyle(fontSize: 15, color: Colors.grey),),
-                                Text("${currentUser}",style: TextStyle(fontSize: 20),)
-                              ],
-                            ),
-                          ],
-                        ),
-                        IconButton(
-                          iconSize: 30,
-                          color: Colors.blue,
-                          padding: EdgeInsets.all(10),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ChangeUsernamePage(),
-                              ),
-                            );
-                          }, 
-                          icon: Icon(Icons.edit)
-                        )
-                      ],
-                    ),
+                     Divider(
+        color: Colors.grey,
+        height: 1,
+        thickness: 1,
+      ),
+                   ListTile(
+        leading: Icon(Icons.person, size: 30, color: Colors.grey[800]),
+        title: Text("Change Name", style: TextStyle(fontSize: 20)),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ChangeUsernamePage(),
+            ),
+          );
+        },
+      ),
                     Divider(
                       color: Colors.grey,
                       height: 5,
                       thickness: 1,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              child: Icon(
-                                Icons.lock,
-                                size: 50,
-                              )
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Password", style: TextStyle(fontSize: 15, color: Colors.grey),),
-                                Text("${"*"*pass.length}",style: TextStyle(fontSize: 20),)
-                              ],
-                            ),
-                          ],
-                        ),
-                        IconButton(
-                          iconSize: 30,
-                          color: Colors.blue,
-                          padding: EdgeInsets.all(10),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ChangePasswordPage(),
-                              ),
-                            );
-                          }, 
-                          icon: Icon(Icons.edit)
-                        )
-                      ]
-                    ),
+                    ListTile(
+        leading: Icon(Icons.lock, size: 30, color: Colors.grey[800]),
+        title: Text("Change Password", style: TextStyle(fontSize: 20)),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ChangePasswordPage(),
+            ),
+          );
+        },
+      ),
                     Divider(
                       color: Colors.grey,
                       height: 5,
