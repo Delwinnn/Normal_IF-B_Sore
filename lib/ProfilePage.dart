@@ -23,7 +23,6 @@ class _ProfilePageState extends State<ProfilePage> {
     final provider = Provider.of<ProviderGudang>(context);
     final currentUser = Provider.of<ProviderGudang>(context).Gudang.usinguser;
     final index = provider.Gudang.user[0].indexOf(currentUser);
-    final pass = provider.Gudang.user[1][index];
     final ImagePicker _picker = ImagePicker();
 
     if (currentUser != "") {
