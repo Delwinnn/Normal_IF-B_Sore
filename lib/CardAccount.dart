@@ -23,8 +23,7 @@ class _CardAccountState extends State<CardAccount> {
   Widget build(BuildContext context) {
   final TextEditingController password = TextEditingController(text : widget.pwd);
   final provider = Provider.of<ProviderGudang>(context);
-    final userImage = provider.getUserImage(widget.index);
-
+  final userImage = provider.getUserImage(widget.index);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -94,13 +93,15 @@ class _CardAccountState extends State<CardAccount> {
               ),
             ],
           ),
+          if(widget.index!=0)
           Divider(
             color: Colors.grey,
             height: 30,
             endIndent: 7,
             indent: 7,
           ),
-          Container(
+          widget.index != 0
+          ? Container(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +174,8 @@ class _CardAccountState extends State<CardAccount> {
                 ),
               ]
             ),
-          ),
+          )
+          : Container()
         ]
       ),
     );
