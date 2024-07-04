@@ -1,5 +1,5 @@
-import 'package:Stokify/LoginPage.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/LoginPage.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,6 @@
-import 'package:Stokify/AddStockPage.dart';
-import 'package:Stokify/CardStock.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/AddStockPage.dart';
+import 'package:Stockify/CardStock.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

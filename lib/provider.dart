@@ -28,7 +28,7 @@ class Company{
 
 class ProviderGudang extends ChangeNotifier{
   Company Gudang = Company(
-    companyname: "Normal Store", 
+    companyname: "Stockify", 
     usinguser: "",
     key: "Hello", 
     user: [

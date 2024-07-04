@@ -1,5 +1,5 @@
 
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

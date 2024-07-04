@@ -1,6 +1,6 @@
 {
-    "name": "Stokify",
-    "short_name": "Stokify",
+    "name": "Stockify",
+    "short_name": "Stockify",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#hexcode",

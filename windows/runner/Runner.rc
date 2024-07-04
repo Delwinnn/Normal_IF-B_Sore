@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "Stokify" "\0"
+            VALUE "FileDescription", "Stockify" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "Stokify" "\0"
+            VALUE "InternalName", "Stockify" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "Stokify.exe" "\0"
-            VALUE "ProductName", "Stokify" "\0"
+            VALUE "OriginalFilename", "Stockify.exe" "\0"
+            VALUE "ProductName", "Stockify" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

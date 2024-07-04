@@ -1,4 +1,4 @@
-import 'package:Stokify/ProductDetail.dart';
+import 'package:Stockify/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class CardStock extends StatelessWidget {

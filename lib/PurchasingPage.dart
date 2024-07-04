@@ -1,6 +1,6 @@
-import 'package:Stokify/AddtransactionPage.dart';
-import 'package:Stokify/CardTransaksi.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/AddtransactionPage.dart';
+import 'package:Stockify/CardTransaksi.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

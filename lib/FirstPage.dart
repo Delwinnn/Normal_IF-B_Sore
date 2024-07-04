@@ -1,9 +1,9 @@
-import 'package:Stokify/AboutPage.dart';
-import 'package:Stokify/PurchasingPage.dart';
-import 'package:Stokify/SalesPage.dart';
-import 'package:Stokify/StockPage.dart';
-import 'package:Stokify/homePage.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/AboutPage.dart';
+import 'package:Stockify/PurchasingPage.dart';
+import 'package:Stockify/SalesPage.dart';
+import 'package:Stockify/StockPage.dart';
+import 'package:Stockify/homePage.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';

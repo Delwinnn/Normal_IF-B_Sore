@@ -1,6 +1,6 @@
-import 'package:Stokify/FirstPage.dart';
-import 'package:Stokify/RegisterPage.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/FirstPage.dart';
+import 'package:Stockify/RegisterPage.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';

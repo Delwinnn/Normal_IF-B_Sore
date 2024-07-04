@@ -1,3 +1,3 @@
-# Stokify
+# Stockify
 
 A new Flutter project.

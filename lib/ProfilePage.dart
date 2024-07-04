@@ -1,11 +1,11 @@
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:Stokify/ChangeName.dart';
-import 'package:Stokify/ChangePass.dart';
-import 'package:Stokify/ChangePicture.dart';
+import 'package:Stockify/ChangeName.dart';
+import 'package:Stockify/ChangePass.dart';
+import 'package:Stockify/ChangePicture.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 

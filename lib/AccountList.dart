@@ -1,5 +1,5 @@
-import 'package:Stokify/CardAccount.dart';
-import 'package:Stokify/provider.dart';
+import 'package:Stockify/CardAccount.dart';
+import 'package:Stockify/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
