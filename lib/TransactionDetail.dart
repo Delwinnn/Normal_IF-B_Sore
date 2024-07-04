@@ -1,4 +1,4 @@
-import 'package:agile_git/CardListItem.dart';
+import 'package:Stokify/CardListItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

@@ -1,5 +1,5 @@
-import 'package:agile_git/LoginPage.dart';
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/LoginPage.dart';
+import 'package:Stokify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,3 +1,3 @@
-# agile_git
+# Stokify
 
 A new Flutter project.

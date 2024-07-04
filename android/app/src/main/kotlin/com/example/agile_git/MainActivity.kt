@@ -1,4 +1,4 @@
-package com.example.agile_git
+package com.example.Stokify
 
 import io.flutter.embedding.android.FlutterActivity
 

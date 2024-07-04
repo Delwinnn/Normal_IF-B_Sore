@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:agile_git/TransactionDetail.dart';
+import 'package:Stokify/TransactionDetail.dart';
 
 class CardTrans extends StatefulWidget {
   final List x;

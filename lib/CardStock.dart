@@ -1,4 +1,4 @@
-import 'package:agile_git/ProductDetail.dart';
+import 'package:Stokify/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class CardStock extends StatelessWidget {

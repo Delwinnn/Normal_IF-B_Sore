@@ -1,9 +1,9 @@
-import 'package:agile_git/AboutPage.dart';
-import 'package:agile_git/AccountList.dart';
-import 'package:agile_git/PurchasingPage.dart';
-import 'package:agile_git/SalesPage.dart';
-import 'package:agile_git/StockPage.dart';
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/AboutPage.dart';
+import 'package:Stokify/AccountList.dart';
+import 'package:Stokify/PurchasingPage.dart';
+import 'package:Stokify/SalesPage.dart';
+import 'package:Stokify/StockPage.dart';
+import 'package:Stokify/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

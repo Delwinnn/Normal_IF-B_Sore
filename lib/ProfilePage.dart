@@ -1,11 +1,11 @@
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:agile_git/ChangeName.dart';
-import 'package:agile_git/ChangePass.dart';
-import 'package:agile_git/ChangePicture.dart';
+import 'package:Stokify/ChangeName.dart';
+import 'package:Stokify/ChangePass.dart';
+import 'package:Stokify/ChangePicture.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 

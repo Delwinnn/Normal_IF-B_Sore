@@ -1,6 +1,6 @@
-import 'package:agile_git/FirstPage.dart';
-import 'package:agile_git/RegisterPage.dart';
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/FirstPage.dart';
+import 'package:Stokify/RegisterPage.dart';
+import 'package:Stokify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';

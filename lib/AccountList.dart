@@ -1,5 +1,5 @@
-import 'package:agile_git/CardAccount.dart';
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/CardAccount.dart';
+import 'package:Stokify/provider.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

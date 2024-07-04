@@ -1,6 +1,6 @@
-import 'package:agile_git/AddtransactionPage.dart';
-import 'package:agile_git/CardTransaksi.dart';
-import 'package:agile_git/provider.dart';
+import 'package:Stokify/AddtransactionPage.dart';
+import 'package:Stokify/CardTransaksi.dart';
+import 'package:Stokify/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
